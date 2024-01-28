@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="548.0" prefWidth="1021.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.linkedinproj.Controller.guiController.UserPage">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="489.0" layoutX="-13.0" layoutY="66.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="169.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.11764705926179886" green="0.5647059082984924" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.1546458750963211" green="0.2686592936515808" blue="0.3684210479259491" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <ImageView fitHeight="78.0" fitWidth="65.0" layoutX="-7.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../888041_logo_512x512.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="search" layoutX="58.0" layoutY="18.0" prefHeight="31.0" prefWidth="678.0" promptText="search..." style="-fx-background-color: #FFFFFF; -fx-border-color: #E0E3ED;">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </TextField>
+      <Rectangle fx:id="homepageRec" arcHeight="500.0" arcWidth="20.0" fill="WHITE" height="42.0" layoutX="14.0" layoutY="77.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="186.0" />
+      <Rectangle fx:id="networkRec" arcHeight="500.0" arcWidth="20.0" fill="WHITE" height="42.0" layoutX="14.0" layoutY="128.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" width="186.0" />
+      <Rectangle fx:id="messageRec" arcHeight="500.0" arcWidth="20.0" fill="WHITE" height="42.0" layoutX="14.0" layoutY="179.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" width="186.0" />
+      <Text fx:id="homepageText" fill="DODGERBLUE" layoutX="58.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Homepage">
+         <font>
+            <Font name="Arial Unicode MS" size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="networkText" fill="WHITE" layoutX="63.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Network">
+         <font>
+            <Font name="Arial Unicode MS" size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="message" fill="WHITE" layoutX="63.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Messege">
+         <font>
+            <Font name="Arial Unicode MS" size="18.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="200.0" layoutX="174.0" layoutY="65.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.3045685291290283" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Rectangle>
+      <Line endX="100.0" layoutX="274.0" layoutY="127.0" startX="-100.0" />
+      <ImageView fx:id="profile" fitHeight="105.0" fitWidth="117.0" layoutX="219.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../user-profile-icon-free-vector.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="edit" fitHeight="18.0" fitWidth="16.0" layoutX="353.0" layoutY="67.0" opacity="0.58" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../1860115.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Text fx:id="usernameText" layoutX="248.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Text>
+      <Text fx:id="jobAndUni" layoutX="235.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="university + job">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="272.0" layoutX="175.0" layoutY="275.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.3045685291290283" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Rectangle>
+      <TextField fx:id="postTF" layoutX="184.0" layoutY="311.0" prefHeight="73.0" prefWidth="180.0" promptText="your post text" style="-fx-background-color: #FFFFFF;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Text layoutX="199.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Share a Post">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="edit1" fitHeight="13.0" fitWidth="16.0" layoutX="183.0" layoutY="288.0" opacity="0.58" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../1860115.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="postPic" fitHeight="115.0" fitWidth="146.0" layoutX="209.0" layoutY="383.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../download.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="choosePic" fitHeight="24.0" fitWidth="33.0" layoutX="184.0" layoutY="517.0" opacity="0.78" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../download (1).png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Button fx:id="postButton" layoutX="309.0" layoutY="514.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="65.0" style="-fx-background-color: #FFFFFF;" text="Post" textFill="DODGERBLUE">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="446.0" layoutX="387.0" layoutY="65.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="411.0">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.3045685291290283" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Rectangle>
+      <ImageView fx:id="postPic2" fitHeight="190.0" fitWidth="180.0" layoutX="486.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../download.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="profile2" fitHeight="65.0" fitWidth="43.0" layoutX="404.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../user-profile-icon-free-vector.jpg" />
+         </image>
+      </ImageView>
+      <Text fx:id="usernameSecond" layoutX="447.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username">
+         <font>
+            <Font name="Arial" size="11.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="postTF2" layoutX="404.0" layoutY="137.0" prefHeight="125.0" prefWidth="383.0" promptText="post...." style="-fx-background-color: #FFFFFF;" />
+      <ScrollPane hbarPolicy="NEVER" layoutX="811.0" layoutY="67.0" prefHeight="446.0" prefWidth="215.0" style="-fx-background-color: #FFFFFF;" vbarPolicy="ALWAYS">
+         <content>
+            <VBox prefHeight="600.0" prefWidth="203.0" spacing="3.0" style="-fx-background-color: #FFFFFF;">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="139.0" prefWidth="203.0" spacing="5.0" style="-fx-background-color: #FFFFFF;">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="2.0" style="-fx-background-color: #E8F3F7;">
+                           <children>
+                              <Circle fx:id="pic1" fill="TRANSPARENT" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
+                              <AnchorPane />
+                              <Text fx:id="username1" strokeType="OUTSIDE" strokeWidth="0.0" text="username1" />
+                              <Button fx:id="follow1" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="12.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="2.0" style="-fx-background-color: #E8F3F7;">
+                           <children>
+                              <Circle fx:id="pic2" fill="TRANSPARENT" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Text fx:id="username2" strokeType="OUTSIDE" strokeWidth="0.0" text="username2" />
+                              <Button fx:id="follow2" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="12.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="139.0" prefWidth="203.0" spacing="5.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E8F3F7;">
+                           <children>
+                              <Circle fx:id="pic3" fill="TRANSPARENT" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Text fx:id="username3" strokeType="OUTSIDE" strokeWidth="0.0" text="username3" />
+                              <Button fx:id="follow3" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="12.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E8F3F7;">
+                           <children>
+                              <Circle fx:id="pic4" fill="TRANSPARENT" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Text fx:id="username4" strokeType="OUTSIDE" strokeWidth="0.0" text="username4" />
+                              <Button fx:id="follow4" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="12.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="139.0" prefWidth="203.0" spacing="5.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E8F3F7;">
+                           <children>
+                              <Circle fx:id="pic5" fill="TRANSPARENT" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Text fx:id="username5" strokeType="OUTSIDE" strokeWidth="0.0" text="username5" />
+                              <Button fx:id="follow5" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="12.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E8F3F7;">
+                           <children>
+                              <Circle fx:id="pic6" fill="TRANSPARENT" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Text fx:id="username6" strokeType="OUTSIDE" strokeWidth="0.0" text="username6" />
+                              <Button fx:id="follow6" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="12.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="139.0" prefWidth="203.0" spacing="5.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E8F3F7;">
+                           <children>
+                              <Circle fx:id="pic7" fill="TRANSPARENT" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Text fx:id="username7" strokeType="OUTSIDE" strokeWidth="0.0" text="username7" />
+                              <Button fx:id="follow7" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="12.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E8F3F7;">
+                           <children>
+                              <Circle fx:id="pic8" fill="TRANSPARENT" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Text fx:id="username8" strokeType="OUTSIDE" strokeWidth="0.0" text="username8" />
+                              <Button fx:id="follow8" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="12.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="139.0" prefWidth="203.0" spacing="5.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E8F3F7;">
+                           <children>
+                              <Circle fx:id="pic9" fill="TRANSPARENT" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Text fx:id="username9" strokeType="OUTSIDE" strokeWidth="0.0" text="username9" />
+                              <Button fx:id="follow9" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="12.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E8F3F7;">
+                           <children>
+                              <Circle fx:id="pic10" fill="TRANSPARENT" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Text fx:id="username10" strokeType="OUTSIDE" strokeWidth="0.0" text="username10" />
+                              <Button fx:id="follow10" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="12.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color opacity="0.24111680686473846" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </VBox>
+         </content>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.39593905210494995" />
+               </color>
+            </DropShadow>
+         </effect>
+      </ScrollPane>
+      <Button fx:id="next" layoutX="923.0" layoutY="518.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="65.0" style="-fx-background-color: TRANSPARENT;">
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../6399624.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="back" layoutX="847.0" layoutY="518.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="65.0" style="-fx-background-color: TRANSPARENT;">
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="22.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../6399624.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <ImageView fx:id="profile3" fitHeight="42.0" fitWidth="43.0" layoutX="874.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../user-profile-icon-free-vector.jpg" />
+         </image>
+      </ImageView>
+      <MenuButton layoutX="920.0" layoutY="21.0" mnemonicParsing="false" text="username">
+        <items>
+          <MenuItem fx:id="item1" mnemonicParsing="false" text="my account" />
+          <MenuItem fx:id="item2" mnemonicParsing="false" text="log out" />
+        </items>
+      </MenuButton>
+      <Button fx:id="likeBtn" alignment="TOP_LEFT" layoutX="391.0" layoutY="453.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="159.0" style="-fx-background-color: TRANSPARENT;" text="Like">
+         <graphic>
+            <ImageView fitHeight="43.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Multimedia__287_29.jpg" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>
