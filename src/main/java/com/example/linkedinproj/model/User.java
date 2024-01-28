@@ -1,5 +1,7 @@
 package com.example.linkedinproj.model;
 
+import javafx.scene.image.Image;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +15,7 @@ public class User {
     private String workplace;
     private List<String> specialties = new ArrayList<>();
     private List<String> connectionId = new ArrayList<>();
+    private Image image;
 
 
     public User(String id) {
@@ -98,4 +101,11 @@ public class User {
                 '}';
     }
 
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
 }

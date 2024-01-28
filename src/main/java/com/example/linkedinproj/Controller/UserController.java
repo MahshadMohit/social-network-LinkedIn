@@ -10,11 +10,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class UserController {
 
     public static final Map<String, User> map = new HashMap<>();
+    public static final Map<User, List<String>> graphMap = new HashMap<>();
 
     public static void readUsersFromJSONFile() throws IOException, ParseException, org.json.simple.parser.ParseException {
         JSONParser parser = new JSONParser();
@@ -43,6 +45,12 @@ public class UserController {
                 user.getConnectionId().add((String) p);
             }
             map.put(id,user);
+        }
+    }
+
+    public static void setGraphMap(){
+        for (User u : map.values()){
+            graphMap.put(u,u.getConnectionId());
         }
     }
 
