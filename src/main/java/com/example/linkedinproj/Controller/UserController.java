@@ -53,15 +53,17 @@ public class UserController {
 
     public void suggestionList(String id) {//make it return list later
         Map<Integer, List<String>> scores = calculateScore(id);
-        PriorityQueue<Integer> sortedScores = new PriorityQueue<>(scores.keySet());
+        PriorityQueue<Integer> sortedScores = new PriorityQueue<>(Comparator.reverseOrder());
+        sortedScores.addAll(scores.keySet());
         List<String> suggestions = new ArrayList<>();
-        while (!sortedScores.isEmpty()) {
+        int counter=1;
+        while (counter<=20) {
             suggestions.add(String.valueOf(sortedScores.poll()));
+            counter++;
         }
         System.out.println("WE SUGGEST THE PEOPLE BELOW FOR YOU");
         System.out.println(suggestions);
     }
-
 
 
     public List<String> findTheClosest(String id) {
