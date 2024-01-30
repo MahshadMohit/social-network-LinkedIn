@@ -12,13 +12,13 @@ import java.text.ParseException;
 import java.util.*;
 
 public class UserController {
-    private Graph.GraphWithEdgeList graph=new Graph.GraphWithEdgeList();
+    private static Graph.GraphWithEdgeList graph = new Graph.GraphWithEdgeList();
 
 
     public static final Map<String, User> map = new HashMap<>();//nodes or person
     public static final Map<User, List<String>> graphMap = new HashMap<>();//adjList
 
-    public static final Map<String, String> options = new HashMap<>();
+    public static final Map<String, String> options = new HashMap<>(); // use for options
     static Scanner scanner = new Scanner(System.in);
     private static List<String> priorities = new ArrayList<>();
 
@@ -56,6 +56,56 @@ public class UserController {
         for (User u : map.values()) {
             graphMap.put(u, u.getConnectionId());
         }
+    }
+
+    // login
+    public User login(String id, String name) {
+        for (String s : map.keySet()) {
+            if (s.equals(id)) {
+                if (map.get(s).getName().equals(name)) {
+                    return map.get(s);
+                }
+            }
+        }
+        return null;
+
+    }
+
+    public static void signup(String id, String name, String dateOfBirth, String universityLocation, String field, String workplace, List<String> specialties, List<String> connectionId) {
+        JSONObject root = new JSONObject();
+        JSONArray users = new JSONArray();
+        //Collections.addAll(users, creat(id, name, dateOfBirth, universityLocation, field, workplace, specialties, connectionId));
+        //root.put("users", users);
+        User user = new User(id);
+        user.setAll(id, name, dateOfBirth, universityLocation, field, workplace, specialties, connectionId);
+        map.put(id, user);
+        graphMap.put(user, connectionId);
+        buildGraph();
+
+
+    }
+
+    public void follow(User user, User user1) {
+        user.getConnectionId().add(user1.getId());
+        user1.getConnectionId().add(user.getId());
+        graph.addEdge(user.getId(), user1.getId(), 1);
+    }
+
+    private static JSONObject creat(String id, String name, String dateOfBirth, String universityLocation, String field, String workplace, List<String> specialties1, List<String> connectionId1) {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("id", id);
+        jsonObject.put("name", name);
+        jsonObject.put("dateOfBirth", dateOfBirth);
+        jsonObject.put("universityLocation", universityLocation);
+        jsonObject.put("field", field);
+        jsonObject.put("workplace", workplace);
+        JSONArray specialties = new JSONArray();
+        Collections.addAll(specialties, specialties1);
+        JSONArray connectionId = new JSONArray();
+        Collections.addAll(connectionId, connectionId1);
+        jsonObject.put("specialties", specialties);
+        jsonObject.put("connectionId", connectionId);
+        return jsonObject;
     }
 
     public void suggestionList(String id) {//make it return list later
@@ -162,9 +212,9 @@ public class UserController {
         int score = getScore("Specialities", 1);
 
         if (user.getSpecialties().size() > mainPerson.getSpecialties().size()) {
-            return 2+score;
+            return 2 + score;
         } else if (user.getSpecialties().size() == mainPerson.getSpecialties().size()) {
-            return 1+score;
+            return 1 + score;
         }
         return score;
     }
@@ -205,16 +255,16 @@ public class UserController {
     }
 
 
-
-
-    public void buildGraph(){
-        for (var label:map.keySet()) {
-            var user=map.get(label);
+    public static void buildGraph() {
+        for (var label : map.keySet()) {
+            var user = map.get(label);
             graph.addNode(label);
 
-            for (var id:graphMap.get(user)) {
-                graph.addEdge(user.getId(), map.get(id).getId(),1);
+            for (var id : graphMap.get(user)) {
+                graph.addEdge(user.getId(), map.get(id).getId(), 1);
             }
         }
     }
+
+
 }

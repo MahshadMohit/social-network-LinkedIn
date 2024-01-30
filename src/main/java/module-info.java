@@ -2,7 +2,7 @@ module com.example.linkedinproj {
     requires javafx.controls;
     requires javafx.fxml;
     requires json.simple;
-    requires json;
+
 
 
     opens com.example.linkedinproj to javafx.fxml;

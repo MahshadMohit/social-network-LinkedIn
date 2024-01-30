@@ -85,6 +85,15 @@ public class User {
     public void setConnectionId(List<String> connectionId) {
         this.connectionId = connectionId;
     }
+    public void setAll(String id,String name,String dateOfBirth,String universityLocation,String field,String workplace,List<String> specialties,List<String> connectionId){
+        this.setSpecialties(specialties);
+        this.setField(field);
+        this.setName(name);
+        this.setUniversityLocation(universityLocation);
+        this.setDateOfBirth(dateOfBirth);
+        this.setConnectionId(connectionId);
+        this.setWorkplace(workplace);
+    }
 
 
     @Override

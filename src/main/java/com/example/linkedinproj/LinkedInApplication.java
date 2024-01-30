@@ -26,7 +26,7 @@ public class LinkedInApplication extends Application {
             throw new RuntimeException(e);
         }
         UserController.setGraphMap();
-
+        UserController.buildGraph();
         launch();
 
     }
