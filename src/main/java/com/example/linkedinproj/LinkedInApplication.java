@@ -26,8 +26,13 @@ public class LinkedInApplication extends Application {
         } catch (IOException | ParseException | java.text.ParseException e) {
             throw new RuntimeException(e);
         }
-        UserController.setGraphMap();
-        //UserController.buildGraph();
+        //UserController.setGraphMap();
+        try {
+            UserController u = new UserController();
+        } catch (IOException | java.text.ParseException | ParseException e) {
+            throw new RuntimeException(e);
+        }
+        //u.buildGraph();
         launch();
 
     }

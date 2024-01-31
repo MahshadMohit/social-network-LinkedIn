@@ -5,36 +5,33 @@ import com.example.linkedinproj.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class UserPage implements Initializable {
     public static User user;
 
     @FXML
-    private Button back;
-
-    @FXML
     private ImageView choosePic;
 
     @FXML
-    private ImageView edit;
+    private ImageView edit1;
 
     @FXML
-    private ImageView edit1;
+    private RadioButton fieldChoice;
 
     @FXML
     private Button follow1;
@@ -73,16 +70,7 @@ public class UserPage implements Initializable {
     private Text homepageText;
 
     @FXML
-    private MenuItem item1;
-
-    @FXML
-    private MenuItem item2;
-
-    @FXML
     private Text jobAndUni;
-
-    @FXML
-    private Button likeBtn;
 
     @FXML
     private Text message;
@@ -95,39 +83,6 @@ public class UserPage implements Initializable {
 
     @FXML
     private Text networkText;
-
-    @FXML
-    private Button next;
-
-    @FXML
-    private Circle pic1;
-
-    @FXML
-    private Circle pic10;
-
-    @FXML
-    private Circle pic2;
-
-    @FXML
-    private Circle pic3;
-
-    @FXML
-    private Circle pic4;
-
-    @FXML
-    private Circle pic5;
-
-    @FXML
-    private Circle pic6;
-
-    @FXML
-    private Circle pic7;
-
-    @FXML
-    private Circle pic8;
-
-    @FXML
-    private Circle pic9;
 
     @FXML
     private Button postButton;
@@ -148,13 +103,16 @@ public class UserPage implements Initializable {
     private ImageView profile;
 
     @FXML
-    private ImageView profile2;
-
-    @FXML
-    private ImageView profile3;
-
-    @FXML
     private TextField search;
+
+    @FXML
+    private RadioButton specialtiChoice;
+
+    @FXML
+    private ToggleButton toggle;
+
+    @FXML
+    private RadioButton uniChoice;
 
     @FXML
     private Text username1;
@@ -187,21 +145,39 @@ public class UserPage implements Initializable {
     private Text username9;
 
     @FXML
-    private Text usernameSecond;
+    private Text usernameText;
 
     @FXML
-    private Text usernameText;
+    private RadioButton workChoice;
+    @FXML
+    private Button next;
+    @FXML
+    private Button prev;
+    private List<String> listPrefer = new ArrayList<>();
+    private UserController controller;
+
+    {
+        try {
+            controller = new UserController();
+        } catch (IOException | ParseException | org.json.simple.parser.ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
     public void setPost(ActionEvent actionEvent) {
         UserController.posts.add(postTF.getText());
         UserController.images.add(postPic.getImage());
         addPost();
 
     }
-    public void addPost(){
-        postTF2.setText(UserController.posts.get(UserController.posts.size()-1));
-        postPic2.setImage(UserController.images.get(UserController.images.size()-1));
+
+    public void addPost() {
+        postTF2.setText(UserController.posts.get(UserController.posts.size() - 1));
+        postPic2.setImage(UserController.images.get(UserController.images.size() - 1));
 
     }
+
     public void setPostPic(MouseEvent mouseEvent) {
         FileChooser fileChooser = new FileChooser();
 
@@ -217,25 +193,61 @@ public class UserPage implements Initializable {
         }
     }
 
+    public void setPrev() {
+        if ((!specialtiChoice.isSelected()) && (!fieldChoice.isSelected()) && (!workChoice.isSelected()) && (!uniChoice.isSelected())){
+            listPrefer = controller.suggestionList(user.getId());
+        }
+        prev();
+    }
 
+    public void setNext() {
+        if ((!specialtiChoice.isSelected()) && (!fieldChoice.isSelected()) && (!workChoice.isSelected()) && (!uniChoice.isSelected())){
+            listPrefer = controller.suggestionList(user.getId());
+        }
+        next();
+    }
+
+    public void next() {
+        username1.setText(listPrefer.get(10));
+        username2.setText(listPrefer.get(11));
+        username3.setText(listPrefer.get(12));
+        username4.setText(listPrefer.get(13));
+        username5.setText(listPrefer.get(14));
+        username6.setText(listPrefer.get(15));
+        username7.setText(listPrefer.get(16));
+        username8.setText(listPrefer.get(17));
+        username9.setText(listPrefer.get(18));
+        username10.setText(listPrefer.get(19));
+    }
+
+    public void prev() {
+        username1.setText(listPrefer.get(0));
+        username2.setText(listPrefer.get(1));
+        username3.setText(listPrefer.get(2));
+        username4.setText(listPrefer.get(3));
+        username5.setText(listPrefer.get(4));
+        username6.setText(listPrefer.get(5));
+        username7.setText(listPrefer.get(6));
+        username8.setText(listPrefer.get(7));
+        username9.setText(listPrefer.get(8));
+        username10.setText(listPrefer.get(9));
+    }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         usernameText.setText(user.getName());
-        if (user.getWorkplace()== null){
+        if (user.getWorkplace() == null) {
             jobAndUni.setText(user.getUniversityLocation());
-        }else {
+        } else {
             jobAndUni.setText(user.getWorkplace() + " " + user.getUniversityLocation());
         }
+        setPrev();
 
-        if (user.getImage() != null){
-            profile.setImage(user.getImage());
-            profile3.setImage(user.getImage());
-        }
+
+
 
     }
-
 
 
 }
