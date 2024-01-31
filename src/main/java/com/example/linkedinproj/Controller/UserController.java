@@ -25,9 +25,14 @@ public class UserController {
     static Scanner scanner = new Scanner(System.in);
     private static List<String> priorities = new ArrayList<>();
 
+    public UserController() throws IOException, ParseException, org.json.simple.parser.ParseException {
+        readUsersFromJSONFile();
+        setGraphMap();
+    }
+
     public static void readUsersFromJSONFile() throws IOException, ParseException, org.json.simple.parser.ParseException {
         JSONParser parser = new JSONParser();
-        JSONArray a = (JSONArray) parser.parse(new FileReader("C:\\Users\\asus\\IdeaProjects\\LinkedInProj\\src\\main\\users.json"));
+        JSONArray a = (JSONArray) parser.parse(new FileReader("src\\main\\users.json"));
         User user;
         for (Object o : a) {
             JSONObject person = (JSONObject) o;
@@ -53,6 +58,7 @@ public class UserController {
             }
             map.put(id, user);
         }
+
     }
 
     public static void setGraphMap() {
@@ -74,19 +80,6 @@ public class UserController {
 
     }
 
-    public static void signup(String id, String name, String dateOfBirth, String universityLocation, String field, String workplace, List<String> specialties, List<String> connectionId) {
-        JSONObject root = new JSONObject();
-        JSONArray users = new JSONArray();
-        //Collections.addAll(users, creat(id, name, dateOfBirth, universityLocation, field, workplace, specialties, connectionId));
-        //root.put("users", users);
-        User user = new User(id);
-        user.setAll(id, name, dateOfBirth, universityLocation, field, workplace, specialties, connectionId);
-        map.put(id, user);
-        graphMap.put(user, connectionId);
-        buildGraph();
-
-
-    }
 
     public void follow(User user, User user1) {
         user.getConnectionId().add(user1.getId());
@@ -94,50 +87,31 @@ public class UserController {
         graph.addEdge(user.getId(), user1.getId(), 1);
     }
 
-    private static JSONObject creat(String id, String name, String dateOfBirth, String universityLocation, String field, String workplace, List<String> specialties1, List<String> connectionId1) {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("id", id);
-        jsonObject.put("name", name);
-        jsonObject.put("dateOfBirth", dateOfBirth);
-        jsonObject.put("universityLocation", universityLocation);
-        jsonObject.put("field", field);
-        jsonObject.put("workplace", workplace);
-        JSONArray specialties = new JSONArray();
-        Collections.addAll(specialties, specialties1);
-        JSONArray connectionId = new JSONArray();
-        Collections.addAll(connectionId, connectionId1);
-        jsonObject.put("specialties", specialties);
-        jsonObject.put("connectionId", connectionId);
-        return jsonObject;
-    }
-
-    public void suggestionList(String id) {//make it return list later
+    public List<String> suggestionList(String id) {//make it return list later
         Map<Integer, List<String>> scores = calculateScore(id);
         PriorityQueue<Integer> sortedScores = new PriorityQueue<>(Comparator.reverseOrder());
         sortedScores.addAll(scores.keySet());
         List<String> suggestions = new ArrayList<>();
-        int counter = 1;
-        while (counter <= 20) {
-            suggestions.add(String.valueOf(sortedScores.poll()));
-            counter++;
+        int score;
+        while (!sortedScores.isEmpty()) {
+            score = sortedScores.poll();
+            suggestions.addAll(scores.get(score));
         }
-        System.out.println("WE SUGGEST THE PEOPLE BELOW FOR YOU");
-        System.out.println(suggestions);
+        return suggestions;
     }
 
 
-    public List<String> findTheClosest(String id) {
+    public Set<String> findTheClosest(String id) {
         Queue<String> neighbours = new LinkedList<>(graphMap.get(map.get(id)));
-        List<String> result = new ArrayList<>();
+        Set<String> result = new HashSet<>();
         findTheClosest(result, neighbours, 2);
         return result;
     }
 
-    private void findTheClosest(List<String> result, Queue<String> queue, int degree) {
+    private void findTheClosest(Set<String> result, Queue<String> queue, int degree) {
 
         if (degree > 5)
             return;
-
         List<String> Dlist = new ArrayList<>();//for every degree
         int limitation = 20 / degree + 2;
 
@@ -151,20 +125,21 @@ public class UserController {
         }
         queue.clear();
         result.addAll(Dlist);
-
+        queue.addAll(Dlist);
+        Dlist.clear();
         findTheClosest(result, queue, degree + 1);
     }
 
 
-    public Map<Integer, List<String>> calculateScore(String mainId) {
-        List<String> resultId = findTheClosest(mainId);
-        var person = map.get(mainId);
+    public Map<Integer, List<String>> calculateScore(String id) {
+        Set<String> resultId = findTheClosest(id);
+        var person = map.get(id);
         Map<Integer, List<String>> scores = new HashMap<>();
         calculate(resultId, person, scores);
         return scores;
     }
 
-    private void calculate(List<String> idList, User mainPerson, Map<Integer, List<String>> scores) {
+    private void calculate(Set<String> idList, User mainPerson, Map<Integer, List<String>> scores) {
         int score;
         for (String id : idList) {
             var user = map.get(id);
@@ -258,15 +233,28 @@ public class UserController {
     }
 
 
-    public static void buildGraph() {
+    public void buildGraph() {
+
         for (String label : map.keySet()) {
             User user = map.get(label);
             graph.addNode(label);
 
             for (var id : graphMap.get(user)) {
+                var neighbour = map.get(id);
+                graph.addNode(neighbour.getId());
                 graph.addEdge(user.getId(), map.get(id).getId(), 1);
             }
         }
+    }
+
+
+    public static void main(String[] args) throws IOException, ParseException, org.json.simple.parser.ParseException {
+        UserController controller = new UserController();
+//        for (String s : controller.suggestionList("1")) {
+//            System.out.println(s);
+//        }
+        controller.buildGraph();
+
     }
 
 
