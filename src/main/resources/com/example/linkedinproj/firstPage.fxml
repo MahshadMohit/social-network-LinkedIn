@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="548.0" prefWidth="1021.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.linkedinproj.Controller.guiController.FirstPage">
+<AnchorPane prefHeight="487.0" prefWidth="1021.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.linkedinproj.Controller.guiController.FirstPage">
    <children>
       <ImageView fitHeight="373.0" fitWidth="623.0" layoutX="-179.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -49,14 +49,14 @@
             <Font name="Arial Italic" size="14.0" />
          </font>
       </Text>
-      <Button layoutX="599.0" layoutY="296.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="108.0" style="-fx-background-color: #0125F5;" text="sign up" onAction="#setSignUp" textFill="WHITE">
+      <Button layoutX="599.0" layoutY="296.0" mnemonicParsing="false"  prefHeight="33.0" prefWidth="108.0" style="-fx-background-color: #0125F5;" text="sign up" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button layoutX="599.0" layoutY="339.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="108.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0125F5; -fx-border-width: 2;" text="log in" onAction="#setLogin" textFill="#0125f5">
+      <Button layoutX="599.0" layoutY="339.0" mnemonicParsing="false" onAction="#setLogin" prefHeight="33.0" prefWidth="108.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0125F5; -fx-border-width: 2;" text="log in" textFill="#0125f5">
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font>

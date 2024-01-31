@@ -127,7 +127,7 @@
             <Image url="@../../../1860115.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="postPic" fitHeight="115.0" fitWidth="146.0" layoutX="209.0" layoutY="383.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="postPic" onMouseClicked="#setPostPic" fitHeight="115.0" fitWidth="146.0" layoutX="209.0" layoutY="383.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../download.png" />
          </image>
@@ -140,7 +140,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <Button fx:id="postButton" layoutX="309.0" layoutY="514.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="65.0" style="-fx-background-color: #FFFFFF;" text="Post" textFill="DODGERBLUE">
+      <Button fx:id="postButton" onAction="#setPost" layoutX="309.0" layoutY="514.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="65.0" style="-fx-background-color: #FFFFFF;" text="Post" textFill="DODGERBLUE">
          <font>
             <Font name="Arial" size="16.0" />
          </font>

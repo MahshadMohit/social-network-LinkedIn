@@ -2,6 +2,7 @@ package com.example.linkedinproj.Controller;
 
 import com.example.linkedinproj.model.Graph;
 import com.example.linkedinproj.model.User;
+import javafx.scene.image.Image;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -13,6 +14,8 @@ import java.util.*;
 
 public class UserController {
     private static Graph.GraphWithEdgeList graph = new Graph.GraphWithEdgeList();
+    public static ArrayList<String> posts = new ArrayList<>();
+    public static ArrayList<Image> images = new ArrayList<>();
 
 
     public static final Map<String, User> map = new HashMap<>();//nodes or person
@@ -59,7 +62,7 @@ public class UserController {
     }
 
     // login
-    public User login(String id, String name) {
+    public static User login(String id, String name) {
         for (String s : map.keySet()) {
             if (s.equals(id)) {
                 if (map.get(s).getName().equals(name)) {
@@ -256,8 +259,8 @@ public class UserController {
 
 
     public static void buildGraph() {
-        for (var label : map.keySet()) {
-            var user = map.get(label);
+        for (String label : map.keySet()) {
+            User user = map.get(label);
             graph.addNode(label);
 
             for (var id : graphMap.get(user)) {

@@ -1,16 +1,28 @@
 package com.example.linkedinproj.Controller.guiController;
 
+import com.example.linkedinproj.Controller.UserController;
+import com.example.linkedinproj.model.User;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 
-public class UserPage {
+import java.io.File;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class UserPage implements Initializable {
+    public static User user;
 
     @FXML
     private Button back;
@@ -179,5 +191,51 @@ public class UserPage {
 
     @FXML
     private Text usernameText;
+    public void setPost(ActionEvent actionEvent) {
+        UserController.posts.add(postTF.getText());
+        UserController.images.add(postPic.getImage());
+        addPost();
+
+    }
+    public void addPost(){
+        postTF2.setText(UserController.posts.get(UserController.posts.size()-1));
+        postPic2.setImage(UserController.images.get(UserController.images.size()-1));
+
+    }
+    public void setPostPic(MouseEvent mouseEvent) {
+        FileChooser fileChooser = new FileChooser();
+
+        FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
+        FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
+        fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);
+
+        File file = fileChooser.showOpenDialog(null);
+
+        if (file != null) {
+            Image image = new Image(file.toURI().toString());
+            postPic.setImage(image);
+        }
+    }
+
+
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        usernameText.setText(user.getName());
+        if (user.getWorkplace()== null){
+            jobAndUni.setText(user.getUniversityLocation());
+        }else {
+            jobAndUni.setText(user.getWorkplace() + " " + user.getUniversityLocation());
+        }
+
+        if (user.getImage() != null){
+            profile.setImage(user.getImage());
+            profile3.setImage(user.getImage());
+        }
+
+    }
+
+
 
 }
