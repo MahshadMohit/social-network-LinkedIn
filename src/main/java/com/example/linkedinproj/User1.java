@@ -191,6 +191,7 @@ public class User1 implements Initializable {
     public void addPost() {
         postTF2.setText(UserController.posts.get(UserController.posts.size() - 1));
         postPic2.setImage(UserController.images.get(UserController.images.size() - 1));
+        usernamePic.setText(user.getName());
 
     }
 
