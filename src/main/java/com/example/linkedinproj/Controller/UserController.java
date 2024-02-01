@@ -28,6 +28,7 @@ public class UserController {
     public UserController() throws IOException, ParseException, org.json.simple.parser.ParseException {
         readUsersFromJSONFile();
         setGraphMap();
+        buildGraph();
     }
 
     public static void readUsersFromJSONFile() throws IOException, ParseException, org.json.simple.parser.ParseException {
@@ -234,6 +235,7 @@ public class UserController {
 
 
     public void buildGraph() {
+
         for (String label : map.keySet()) {
             User user = map.get(label);
             graph.addNode(label);
@@ -251,8 +253,13 @@ public class UserController {
         UserController controller = new UserController();
 
         System.out.println(controller.suggestionList("999").size());
+//        for (String s : controller.suggestionList("1")) {
+//            System.out.println(s);
+//        }
+        controller.buildGraph();
 
     }
 
 
 }
+

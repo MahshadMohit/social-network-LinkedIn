@@ -165,17 +165,15 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="2.0" style="-fx-background-color: #E8F3F7;">
                            <children>
-                              <ImageView fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../images%20(1).jpeg" />
-                                 </image>
+                              <ImageView fx:id="profile0" fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+
                                  <effect>
                                     <DropShadow />
                                  </effect>
                               </ImageView>
                               <AnchorPane />
                               <Text fx:id="username1" strokeType="OUTSIDE" strokeWidth="0.0" text="username1" />
-                              <Button fx:id="follow1" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                              <Button fx:id="follow1" onAction="#setFollow1" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="12.0" />
                                  </font>
@@ -187,16 +185,16 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="2.0" style="-fx-background-color: #E8F3F7;">
                            <children>
-                              <ImageView fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="profile1" fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../irs01_s3old_1539848611938643.jpg" />
+                                    <Image url="@../../8.jpg" />
                                  </image>
                                  <effect>
                                     <DropShadow />
                                  </effect>
                               </ImageView>
                               <Text fx:id="username2" strokeType="OUTSIDE" strokeWidth="0.0" text="username2" />
-                              <Button fx:id="follow2" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                              <Button fx:id="follow2" onAction="#setFollow2" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="12.0" />
                                  </font>
@@ -212,16 +210,16 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E8F3F7;">
                            <children>
-                              <ImageView fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="profile2" fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../2996950.jpg" />
+                                    <Image url="@../../0.jpg" />
                                  </image>
                                  <effect>
                                     <DropShadow />
                                  </effect>
                               </ImageView>
                               <Text fx:id="username3" strokeType="OUTSIDE" strokeWidth="0.0" text="username3" />
-                              <Button fx:id="follow3" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                              <Button fx:id="follow3" onAction="#setFollow3" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="12.0" />
                                  </font>
@@ -233,16 +231,16 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E8F3F7;">
                            <children>
-                              <ImageView fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="profile3" fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../images.jpeg" />
+                                    <Image url="@../../4.jpeg" />
                                  </image>
                                  <effect>
                                     <DropShadow />
                                  </effect>
                               </ImageView>
                               <Text fx:id="username4" strokeType="OUTSIDE" strokeWidth="0.0" text="username4" />
-                              <Button fx:id="follow4" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                              <Button fx:id="follow4" onAction="#setFollow4" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="12.0" />
                                  </font>
@@ -258,16 +256,16 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E8F3F7;">
                            <children>
-                              <ImageView fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="profile4" fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../download.jpeg" />
+                                    <Image url="@../../1.jpeg" />
                                  </image>
                                  <effect>
                                     <DropShadow />
                                  </effect>
                               </ImageView>
                               <Text fx:id="username5" strokeType="OUTSIDE" strokeWidth="0.0" text="username5" />
-                              <Button fx:id="follow5" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                              <Button fx:id="follow5" onAction="#setFollow5" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="12.0" />
                                  </font>
@@ -279,16 +277,14 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E8F3F7;">
                            <children>
-                              <ImageView fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../download%20(1).jpeg" />
-                                 </image>
+                              <ImageView fx:id="profile5" fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+
                                  <effect>
                                     <DropShadow />
                                  </effect>
                               </ImageView>
                               <Text fx:id="username6" strokeType="OUTSIDE" strokeWidth="0.0" text="username6" />
-                              <Button fx:id="follow6" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                              <Button fx:id="follow6" onAction="#setFollow6" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="12.0" />
                                  </font>
@@ -304,16 +300,16 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E8F3F7;">
                            <children>
-                              <ImageView fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="profile6" fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../daafd3a114bc490833dc89c2a49eb3d6.jpg" />
+                                    <Image url="@../../9.jpg" />
                                  </image>
                                  <effect>
                                     <DropShadow />
                                  </effect>
                               </ImageView>
                               <Text fx:id="username7" strokeType="OUTSIDE" strokeWidth="0.0" text="username7" />
-                              <Button fx:id="follow7" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                              <Button fx:id="follow7" onAction="#setFollow7" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="12.0" />
                                  </font>
@@ -325,16 +321,16 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E8F3F7;">
                            <children>
-                              <ImageView fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="profile7" fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../download (2).jpeg" />
+                                    <Image url="@../../5.jpeg" />
                                  </image>
                                  <effect>
                                     <DropShadow />
                                  </effect>
                               </ImageView>
                               <Text fx:id="username8" strokeType="OUTSIDE" strokeWidth="0.0" text="username8" />
-                              <Button fx:id="follow8" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                              <Button fx:id="follow8" onAction="#setFollow8" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="12.0" />
                                  </font>
@@ -350,16 +346,16 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E8F3F7;">
                            <children>
-                              <ImageView fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="profile8" fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../images (2).jpeg" />
+                                    <Image url="@../../6.jpeg" />
                                  </image>
                                  <effect>
                                     <DropShadow />
                                  </effect>
                               </ImageView>
                               <Text fx:id="username9" strokeType="OUTSIDE" strokeWidth="0.0" text="username9" />
-                              <Button fx:id="follow9" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                              <Button fx:id="follow9" onAction="#setFollow9" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="12.0" />
                                  </font>
@@ -371,16 +367,16 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E8F3F7;">
                            <children>
-                              <ImageView fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="profile9" fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../images (3).jpeg" />
+                                    <Image url="@../../7.jpeg" />
                                  </image>
                                  <effect>
                                     <DropShadow />
                                  </effect>
                               </ImageView>
                               <Text fx:id="username10" strokeType="OUTSIDE" strokeWidth="0.0" text="username10" />
-                              <Button fx:id="follow10" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                              <Button fx:id="follow10" onAction="#setFollow10" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="12.0" />
                                  </font>
@@ -415,7 +411,7 @@
       <RadioButton fx:id="fieldChoice" layoutX="882.0" layoutY="527.0" mnemonicParsing="false" text="Field" />
       <RadioButton fx:id="workChoice" layoutX="800.0" layoutY="527.0" mnemonicParsing="false" text="WorkPlace" />
       <RadioButton fx:id="uniChoice" layoutX="690.0" layoutY="526.0" mnemonicParsing="false" text="UniversityPlace" />
-      <Button fx:id="next" onAction="#setNext" layoutX="936.0" layoutY="37.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="65.0" style="-fx-background-color: #1e90ff;" text="next" textFill="WHITE">
+      <Button fx:id="next" layoutX="936.0" layoutY="37.0" mnemonicParsing="false" onAction="#setNext" prefHeight="23.0" prefWidth="65.0" style="-fx-background-color: #1e90ff;" text="next" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
@@ -423,7 +419,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="prev" onAction="#setPrev" layoutX="826.0" layoutY="37.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="80.0" style="-fx-background-color: #1e90ff;" text="previous" textFill="WHITE">
+      <Button fx:id="prev" layoutX="826.0" layoutY="37.0" mnemonicParsing="false" onAction="#setPrev" prefHeight="23.0" prefWidth="80.0" style="-fx-background-color: #1e90ff;" text="previous" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>

@@ -9,6 +9,8 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
@@ -153,7 +155,11 @@ public class UserPage implements Initializable {
     private Button next;
     @FXML
     private Button prev;
+    @FXML
+    private ImageView profile0,profile1 , profile2,profile3,profile4,profile5,profile6,profile7,profile8,profile9;
     private List<String> listPrefer = new ArrayList<>();
+    public Image[] images = new Image[10];
+    public Button[] buttons = new Button[10];
     private UserController controller;
 
     {
@@ -194,14 +200,14 @@ public class UserPage implements Initializable {
     }
 
     public void setPrev() {
-        if ((!specialtiChoice.isSelected()) && (!fieldChoice.isSelected()) && (!workChoice.isSelected()) && (!uniChoice.isSelected())){
+        if ((!specialtiChoice.isSelected()) && (!fieldChoice.isSelected()) && (!workChoice.isSelected()) && (!uniChoice.isSelected())) {
             listPrefer = controller.suggestionList(user.getId());
         }
         prev();
     }
 
     public void setNext() {
-        if ((!specialtiChoice.isSelected()) && (!fieldChoice.isSelected()) && (!workChoice.isSelected()) && (!uniChoice.isSelected())){
+        if ((!specialtiChoice.isSelected()) && (!fieldChoice.isSelected()) && (!workChoice.isSelected()) && (!uniChoice.isSelected())) {
             listPrefer = controller.suggestionList(user.getId());
         }
         next();
@@ -231,6 +237,112 @@ public class UserPage implements Initializable {
         username8.setText(listPrefer.get(7));
         username9.setText(listPrefer.get(8));
         username10.setText(listPrefer.get(9));
+        setImages(listPrefer.get(0),profile0);
+        setImages(listPrefer.get(1),profile1);
+        setImages(listPrefer.get(2),profile2);
+        setImages(listPrefer.get(3),profile3);
+        setImages(listPrefer.get(4),profile4);
+        setImages(listPrefer.get(5),profile5);
+        setImages(listPrefer.get(6),profile6);
+        setImages(listPrefer.get(7),profile7);
+        setImages(listPrefer.get(8),profile8);
+        setImages(listPrefer.get(9),profile9);
+    }
+
+    public void setImages(String id, ImageView view) {
+        setArrayImages();
+        int r = Integer.parseInt(id) % 10;
+        view.setImage(images[r]);
+    }
+
+    public void setArrayImages() {
+        images[0] = new Image("C:\\Users\\asus\\IdeaProjects\\LinkedInProj\\src\\main\\resources\\com\\0.jpg");
+        images[1] = new Image("C:\\Users\\asus\\IdeaProjects\\LinkedInProj\\src\\main\\resources\\com\\1.jpeg");
+        images[2] = new Image("C:\\Users\\asus\\IdeaProjects\\LinkedInProj\\src\\main\\resources\\com\\2.jpeg");
+        images[3] = new Image("C:\\Users\\asus\\IdeaProjects\\LinkedInProj\\src\\main\\resources\\com\\3.jpeg");
+        images[4] = new Image("C:\\Users\\asus\\IdeaProjects\\LinkedInProj\\src\\main\\resources\\com\\4.jpeg");
+        images[5] = new Image("C:\\Users\\asus\\IdeaProjects\\LinkedInProj\\src\\main\\resources\\com\\5.jpeg");
+        images[6] = new Image("C:\\Users\\asus\\IdeaProjects\\LinkedInProj\\src\\main\\resources\\com\\6.jpeg");
+        images[7] = new Image("C:\\Users\\asus\\IdeaProjects\\LinkedInProj\\src\\main\\resources\\com\\7.jpeg");
+        images[8] = new Image("C:\\Users\\asus\\IdeaProjects\\LinkedInProj\\src\\main\\resources\\com\\8.jpg");
+        images[9] = new Image("C:\\Users\\asus\\IdeaProjects\\LinkedInProj\\src\\main\\resources\\com\\9.jpg");
+
+    }
+    public void setArrayFollows(){
+        buttons[0] = follow1;
+        buttons[1] = follow2;
+        buttons[2] = follow3;
+        buttons[3] = follow4;
+        buttons[4] = follow5;
+        buttons[5] = follow6;
+        buttons[6] = follow7;
+        buttons[7] = follow8;
+        buttons[8] = follow9;
+        buttons[9] = follow10;
+
+    }
+    public void follow(Button button){
+        setArrayFollows();
+        for (int i = 0; i < buttons.length; i++) {
+            if (buttons[i].getId().equals(button.getId())){
+                controller.follow(user,UserController.map.get(listPrefer.get(i)));
+            }
+        }
+
+    }
+    public void followed(Button b){
+        b.setText("followed");
+        b.setBackground(Background.fill(Color.GREEN));
+    }
+    public void setFollow1(ActionEvent actionEvent) {
+        follow(follow1);
+        followed(follow1);
+    }
+
+    public void setFollow2(ActionEvent actionEvent) {
+        follow(follow2);
+        followed(follow2);
+
+    }
+
+    public void setFollow3(ActionEvent actionEvent) {
+        follow(follow3);
+        followed(follow3);
+    }
+
+    public void setFollow4(ActionEvent actionEvent) {
+        follow(follow4);
+        followed(follow4);
+    }
+
+    public void setFollow5(ActionEvent actionEvent) {
+        follow(follow5);
+        followed(follow5);
+    }
+
+    public void setFollow6(ActionEvent actionEvent) {
+        follow(follow6);
+        followed(follow6);
+    }
+
+    public void setFollow7(ActionEvent actionEvent) {
+        follow(follow7);
+        followed(follow7);
+    }
+
+    public void setFollow8(ActionEvent actionEvent) {
+        follow(follow8);
+        followed(follow8);
+    }
+
+    public void setFollow9(ActionEvent actionEvent) {
+        follow(follow9);
+        followed(follow9);
+    }
+
+    public void setFollow10(ActionEvent actionEvent) {
+        follow(follow10);
+        followed(follow10);
     }
 
 
@@ -242,12 +354,13 @@ public class UserPage implements Initializable {
         } else {
             jobAndUni.setText(user.getWorkplace() + " " + user.getUniversityLocation());
         }
+        setImages(user.getId(),profile);
         setPrev();
 
 
 
-
     }
+
 
 
 }
