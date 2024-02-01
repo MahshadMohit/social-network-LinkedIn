@@ -2,14 +2,19 @@ package com.example.linkedinproj.Controller.guiController;
 
 import com.example.linkedinproj.Controller.UserController;
 import com.example.linkedinproj.model.User;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -25,6 +30,13 @@ import java.util.ResourceBundle;
 
 public class UserPage implements Initializable {
     public static User user;
+    public ImageView postPicforPost;
+    public Text usernamePic;
+    public TextField comment;
+    @FXML
+    private VBox vbox;
+    @FXML
+    private ScrollPane pane;
 
     @FXML
     private ImageView choosePic;
@@ -156,8 +168,10 @@ public class UserPage implements Initializable {
     @FXML
     private Button prev;
     @FXML
-    private ImageView profile0,profile1 , profile2,profile3,profile4,profile5,profile6,profile7,profile8,profile9;
+    private ImageView profile0, profile1, profile2, profile3, profile4, profile5, profile6, profile7, profile8, profile9;
     private List<String> listPrefer = new ArrayList<>();
+    @FXML
+    private Text conUser;
     public Image[] images = new Image[10];
     public Button[] buttons = new Button[10];
     private UserController controller;
@@ -202,13 +216,16 @@ public class UserPage implements Initializable {
     public void setPrev() {
         if ((!specialtiChoice.isSelected()) && (!fieldChoice.isSelected()) && (!workChoice.isSelected()) && (!uniChoice.isSelected())) {
             listPrefer = controller.suggestionList(user.getId());
+            listPrefer.remove(0);
         }
         prev();
     }
 
     public void setNext() {
         if ((!specialtiChoice.isSelected()) && (!fieldChoice.isSelected()) && (!workChoice.isSelected()) && (!uniChoice.isSelected())) {
+
             listPrefer = controller.suggestionList(user.getId());
+            listPrefer.remove(0);
         }
         next();
     }
@@ -237,16 +254,16 @@ public class UserPage implements Initializable {
         username8.setText(listPrefer.get(7));
         username9.setText(listPrefer.get(8));
         username10.setText(listPrefer.get(9));
-        setImages(listPrefer.get(0),profile0);
-        setImages(listPrefer.get(1),profile1);
-        setImages(listPrefer.get(2),profile2);
-        setImages(listPrefer.get(3),profile3);
-        setImages(listPrefer.get(4),profile4);
-        setImages(listPrefer.get(5),profile5);
-        setImages(listPrefer.get(6),profile6);
-        setImages(listPrefer.get(7),profile7);
-        setImages(listPrefer.get(8),profile8);
-        setImages(listPrefer.get(9),profile9);
+        setImages(listPrefer.get(0), profile0);
+        setImages(listPrefer.get(1), profile1);
+        setImages(listPrefer.get(2), profile2);
+        setImages(listPrefer.get(3), profile3);
+        setImages(listPrefer.get(4), profile4);
+        setImages(listPrefer.get(5), profile5);
+        setImages(listPrefer.get(6), profile6);
+        setImages(listPrefer.get(7), profile7);
+        setImages(listPrefer.get(8), profile8);
+        setImages(listPrefer.get(9), profile9);
     }
 
     public void setImages(String id, ImageView view) {
@@ -268,7 +285,8 @@ public class UserPage implements Initializable {
         images[9] = new Image("C:\\Users\\asus\\IdeaProjects\\LinkedInProj\\src\\main\\resources\\com\\9.jpg");
 
     }
-    public void setArrayFollows(){
+
+    public void setArrayFollows() {
         buttons[0] = follow1;
         buttons[1] = follow2;
         buttons[2] = follow3;
@@ -281,19 +299,23 @@ public class UserPage implements Initializable {
         buttons[9] = follow10;
 
     }
-    public void follow(Button button){
+
+    public void follow(Button button) {
         setArrayFollows();
         for (int i = 0; i < buttons.length; i++) {
-            if (buttons[i].getId().equals(button.getId())){
-                controller.follow(user,UserController.map.get(listPrefer.get(i)));
+            if (buttons[i].getId().equals(button.getId())) {
+                controller.follow(user, UserController.map.get(listPrefer.get(i)));
             }
         }
 
     }
-    public void followed(Button b){
+
+    public void followed(Button b) {
         b.setText("followed");
         b.setBackground(Background.fill(Color.GREEN));
+        conUser.setText(String.valueOf(user.getConnectionId().size()));
     }
+
     public void setFollow1(ActionEvent actionEvent) {
         follow(follow1);
         followed(follow1);
@@ -345,6 +367,32 @@ public class UserPage implements Initializable {
         followed(follow10);
     }
 
+    public void seeConnections(MouseEvent mouseEvent) {
+        makeConnectionsVisible();
+        pane.setVisible(true);
+
+    }
+
+    public void makeConnectionsVisible() {
+        List<User> connectionsList = new ArrayList<>();
+        for (String s : user.getConnectionId()) {
+            connectionsList.add(UserController.map.get(s));
+        }
+
+        for (User u : connectionsList) {
+            ImageView img = new ImageView();
+            img.setFitHeight(66.0);
+            img.setFitWidth(72.0);
+            setImages(u.getId(), img);
+            vbox.getChildren().add(img);
+            vbox.getChildren().add(new Text(u.getId()));
+        }
+    }
+    public void setExit(MouseEvent mouseEvent) {
+        pane.setVisible(false);
+    }
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -354,9 +402,9 @@ public class UserPage implements Initializable {
         } else {
             jobAndUni.setText(user.getWorkplace() + " " + user.getUniversityLocation());
         }
-        setImages(user.getId(),profile);
+        conUser.setText(String.valueOf(user.getConnectionId().size()));
+        setImages(user.getId(), profile);
         setPrev();
-
 
 
     }

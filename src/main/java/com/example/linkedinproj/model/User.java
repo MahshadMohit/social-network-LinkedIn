@@ -1,7 +1,10 @@
 package com.example.linkedinproj.model;
 
+import com.example.linkedinproj.Controller.UserController;
 import javafx.scene.image.Image;
 
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +19,7 @@ public class User {
     private List<String> specialties = new ArrayList<>();
     private List<String> connectionId = new ArrayList<>();
     private Image image;
+
 
 
     public User(String id) {
@@ -117,4 +121,5 @@ public class User {
     public void setImage(Image image) {
         this.image = image;
     }
+
 }

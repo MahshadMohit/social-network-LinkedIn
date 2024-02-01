@@ -69,7 +69,7 @@
             <Font name="Arial Unicode MS" size="18.0" />
          </font>
       </Text>
-      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="200.0" layoutX="174.0" layoutY="65.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0">
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="200.0" layoutX="174.0" layoutY="65.0" onMouseClicked="#setExit" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0">
          <effect>
             <DropShadow>
                <color>
@@ -79,7 +79,7 @@
          </effect>
       </Rectangle>
       <Line endX="100.0" layoutX="274.0" layoutY="127.0" startX="-100.0" />
-      <ImageView fx:id="profile" fitHeight="95.0" fitWidth="158.0" layoutX="196.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="profile" fitHeight="95.0" fitWidth="158.0" layoutX="196.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" smooth="false">
          <image>
             <Image url="@../../Friends-1.jpg" />
          </image>
@@ -126,14 +126,6 @@
             <Image url="@../../../download.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="choosePic" fitHeight="24.0" fitWidth="33.0" layoutX="184.0" layoutY="517.0" opacity="0.78" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../download (1).png" />
-         </image>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </ImageView>
       <Button fx:id="postButton" layoutX="309.0" layoutY="514.0" mnemonicParsing="false" onAction="#setPost" prefHeight="24.0" prefWidth="65.0" style="-fx-background-color: #FFFFFF;" text="Post" textFill="DODGERBLUE">
          <font>
             <Font name="Arial" size="16.0" />
@@ -142,7 +134,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="446.0" layoutX="387.0" layoutY="65.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="411.0">
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="446.0" layoutX="387.0" layoutY="68.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="411.0">
          <effect>
             <DropShadow>
                <color>
@@ -173,7 +165,7 @@
                               </ImageView>
                               <AnchorPane />
                               <Text fx:id="username1" strokeType="OUTSIDE" strokeWidth="0.0" text="username1" />
-                              <Button fx:id="follow1" onAction="#setFollow1" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                              <Button fx:id="follow1" mnemonicParsing="false" onAction="#setFollow1" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="12.0" />
                                  </font>
@@ -194,7 +186,7 @@
                                  </effect>
                               </ImageView>
                               <Text fx:id="username2" strokeType="OUTSIDE" strokeWidth="0.0" text="username2" />
-                              <Button fx:id="follow2" onAction="#setFollow2" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                              <Button fx:id="follow2" mnemonicParsing="false" onAction="#setFollow2" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="12.0" />
                                  </font>
@@ -219,7 +211,7 @@
                                  </effect>
                               </ImageView>
                               <Text fx:id="username3" strokeType="OUTSIDE" strokeWidth="0.0" text="username3" />
-                              <Button fx:id="follow3" onAction="#setFollow3" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                              <Button fx:id="follow3" mnemonicParsing="false" onAction="#setFollow3" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="12.0" />
                                  </font>
@@ -240,7 +232,7 @@
                                  </effect>
                               </ImageView>
                               <Text fx:id="username4" strokeType="OUTSIDE" strokeWidth="0.0" text="username4" />
-                              <Button fx:id="follow4" onAction="#setFollow4" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                              <Button fx:id="follow4" mnemonicParsing="false" onAction="#setFollow4" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="12.0" />
                                  </font>
@@ -265,7 +257,7 @@
                                  </effect>
                               </ImageView>
                               <Text fx:id="username5" strokeType="OUTSIDE" strokeWidth="0.0" text="username5" />
-                              <Button fx:id="follow5" onAction="#setFollow5" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                              <Button fx:id="follow5" mnemonicParsing="false" onAction="#setFollow5" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="12.0" />
                                  </font>
@@ -284,7 +276,7 @@
                                  </effect>
                               </ImageView>
                               <Text fx:id="username6" strokeType="OUTSIDE" strokeWidth="0.0" text="username6" />
-                              <Button fx:id="follow6" onAction="#setFollow6" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                              <Button fx:id="follow6" mnemonicParsing="false" onAction="#setFollow6" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="12.0" />
                                  </font>
@@ -309,7 +301,7 @@
                                  </effect>
                               </ImageView>
                               <Text fx:id="username7" strokeType="OUTSIDE" strokeWidth="0.0" text="username7" />
-                              <Button fx:id="follow7" onAction="#setFollow7" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                              <Button fx:id="follow7" mnemonicParsing="false" onAction="#setFollow7" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="12.0" />
                                  </font>
@@ -330,7 +322,7 @@
                                  </effect>
                               </ImageView>
                               <Text fx:id="username8" strokeType="OUTSIDE" strokeWidth="0.0" text="username8" />
-                              <Button fx:id="follow8" onAction="#setFollow8" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                              <Button fx:id="follow8" mnemonicParsing="false" onAction="#setFollow8" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="12.0" />
                                  </font>
@@ -355,7 +347,7 @@
                                  </effect>
                               </ImageView>
                               <Text fx:id="username9" strokeType="OUTSIDE" strokeWidth="0.0" text="username9" />
-                              <Button fx:id="follow9" onAction="#setFollow9" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                              <Button fx:id="follow9" mnemonicParsing="false" onAction="#setFollow9" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="12.0" />
                                  </font>
@@ -376,7 +368,7 @@
                                  </effect>
                               </ImageView>
                               <Text fx:id="username10" strokeType="OUTSIDE" strokeWidth="0.0" text="username10" />
-                              <Button fx:id="follow10" onAction="#setFollow10" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
+                              <Button fx:id="follow10" mnemonicParsing="false" onAction="#setFollow10" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #1e90ff;" text="Follow" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="12.0" />
                                  </font>
@@ -427,5 +419,31 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <Text fx:id="conUser" layoutX="239.0" layoutY="230.0" onMouseClicked="#seeConnections" strokeType="OUTSIDE" strokeWidth="0.0" text="connections">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Text>
+      <ScrollPane fx:id="pane" hbarPolicy="NEVER" layoutX="274.0" layoutY="200.0" prefHeight="327.0" prefWidth="201.0" vbarPolicy="ALWAYS" visible="false">
+         <content>
+            <VBox fx:id="vbox" alignment="TOP_CENTER" prefHeight="375.0" prefWidth="181.0" spacing="5.0" />
+         </content>
+      </ScrollPane>
+      <TextField fx:id="comment" layoutX="401.0" layoutY="473.0" prefHeight="25.0" prefWidth="355.0" promptText="comment...">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </TextField>
+      <Text fx:id="usernamePic" layoutX="472.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="postPicforPost" fitHeight="54.0" fitWidth="62.0" layoutX="399.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+
    </children>
 </AnchorPane>
