@@ -175,9 +175,7 @@ public class User1 implements Initializable {
     {
         try {
             controller = new UserController();
-        } catch (IOException | org.json.simple.parser.ParseException e) {
-            throw new RuntimeException(e);
-        } catch (ParseException e) {
+        } catch (IOException | org.json.simple.parser.ParseException | ParseException e) {
             throw new RuntimeException(e);
         }
     }
@@ -210,21 +208,35 @@ public class User1 implements Initializable {
             postPic.setImage(image);
         }
     }
-
-    public void setPrev() {
+    public void select(){
         if ((!specialtiChoice.isSelected()) && (!fieldChoice.isSelected()) && (!workChoice.isSelected()) && (!uniChoice.isSelected())) {
             listPrefer = controller.suggestionList(user.getId());
-            listPrefer.remove(0);
+
         }
+        else if ((uniChoice.isSelected()) && (!specialtiChoice.isSelected()) && (!fieldChoice.isSelected()) && (!workChoice.isSelected())){
+            listPrefer = controller.finalResult(user.getId(),"1");
+        }
+        else if( (workChoice.isSelected()) && (!specialtiChoice.isSelected()) && (!fieldChoice.isSelected()) && (!uniChoice.isSelected())){
+            listPrefer = controller.finalResult(user.getId(),"2");
+
+        }
+        else if (fieldChoice.isSelected() && (!workChoice.isSelected()) && (!specialtiChoice.isSelected()) && (!uniChoice.isSelected())){
+            listPrefer = controller.finalResult(user.getId(),"3");
+        }
+        else if (specialtiChoice.isSelected() && (!fieldChoice.isSelected()) && (!workChoice.isSelected()) && (!uniChoice.isSelected())){
+            listPrefer = controller.finalResult(user.getId(),"4");
+        }
+    }
+
+    public void setPrev() {
+        select();
+        listPrefer.remove(0);
         prev();
     }
 
     public void setNext() {
-        if ((!specialtiChoice.isSelected()) && (!fieldChoice.isSelected()) && (!workChoice.isSelected()) && (!uniChoice.isSelected())) {
-
-            listPrefer = controller.suggestionList(user.getId());
-            listPrefer.remove(0);
-        }
+        select();
+        listPrefer.remove(0);
         next();
     }
 

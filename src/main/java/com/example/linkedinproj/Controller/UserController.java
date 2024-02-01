@@ -206,7 +206,7 @@ public class UserController {
     public boolean isSpecialSelection() {
         return !priorities.isEmpty();
     }
-
+    // 1 2 3
     public void prioritization(String input) {
         System.out.println("enter your priorities with  number in order");
         System.out.println("1:UniversityPlace");
@@ -262,10 +262,13 @@ public class UserController {
 
     public static void main(String[] args) throws IOException, ParseException, org.json.simple.parser.ParseException {
         UserController controller = new UserController();
-        String input = "2 1";
+        String input = "2";
         for (var s : controller.finalResult("1", input)) {
-            System.out.println(s);
+            System.out.print(s +" ");
 
+        }
+        for (String s1 : controller.suggestionList("1")){
+            System.out.print(s1 + " ");
         }
 
 
