@@ -1,9 +1,6 @@
 package com.example.linkedinproj.model;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 public class Graph {
@@ -341,6 +338,49 @@ public class Graph {
             }
             return endVertices;
         }
+        /*public List<List<String>> highestDegreeCentralityNodesPerComponent() {
+            List<List<String>> result = new ArrayList<>();
+
+            Set<Node> visitedNodes = new HashSet<>();
+            for (Node node : adjacencyList.keySet()) {
+                if (!visitedNodes.contains(node)) {
+                    List<String> componentNodes = new ArrayList<>();
+                    dfs(node, visitedNodes, componentNodes);
+                    result.add(findHighestDegreeCentralityNodes(componentNodes));
+                }
+            }
+
+            return result;
+        }
+
+        private void dfs(Node node, Set<Node> visitedNodes, List<String> componentNodes) {
+            visitedNodes.add(node);
+            componentNodes.add(node.label);
+
+            for (Node neighbor : adjacencyList.get(node)) {
+                if (!visitedNodes.contains(neighbor)) {
+                    dfs(neighbor, visitedNodes, componentNodes);
+                }
+            }
+        }
+
+        private List<String> findHighestDegreeCentralityNodes(List<String> nodes) {
+            List<String> highestDegreeNodes = new ArrayList<>();
+            int highestDegree = 0;
+
+            for (String node : nodes) {
+                int degree = outDegree(node);
+                if (degree > highestDegree) {
+                    highestDegreeNodes.clear();
+                    highestDegreeNodes.add(node);
+                    highestDegree = degree;
+                } else if (degree == highestDegree) {
+                    highestDegreeNodes.add(node);
+                }
+            }
+
+            return highestDegreeNodes;
+        }*/
 
 
         public String opposite(String label, Edge e) {
