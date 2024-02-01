@@ -3,13 +3,15 @@ package com.example.linkedinproj.Controller;
 import com.example.linkedinproj.model.Graph;
 import com.example.linkedinproj.model.User;
 import javafx.scene.image.Image;
+import org.json.JSONException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.*;
 
 public class UserController {
@@ -79,6 +81,38 @@ public class UserController {
         }
         return null;
 
+    }
+    public static void signup(String id,String name,String dateOfBirth,String universityLocation,
+                              String field, String workplace,List<String> specialties, List<String> connectionId   ){
+        JSONParser jsonParser = new JSONParser();
+        try {
+            Object obj = jsonParser.parse(new FileReader("src/main/users.json"));
+            JSONArray jsonArray = (JSONArray) obj;
+
+
+            org.json.JSONObject object1 = new org.json.JSONObject();
+            object1.put("id",id);
+            object1.put("name",name);
+            object1.put("dateOfBirth",dateOfBirth);
+            object1.put("universityLocation",universityLocation);
+            object1.put("field",field);
+            object1.put("workplace",workplace);
+
+            object1.put("specialties",specialties);
+
+            object1.put("connectionId",connectionId);
+            jsonArray.add(object1);
+
+            FileWriter file = new FileWriter("src/main/users.json");
+            file.write(jsonArray.toJSONString());
+            file.flush();
+            file.close();
+        }
+        catch (ParseException | IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
@@ -209,7 +243,7 @@ public class UserController {
         System.out.println("3:Field");
         System.out.println("4:Specialties");
         fillTheOption();
-        String input = scanner.next();
+        String input = scanner.nextLine();
         priorities.addAll(List.of(input.split(" ")));
 
     }
@@ -256,8 +290,11 @@ public class UserController {
 //        for (String s : controller.suggestionList("1")) {
 //            System.out.println(s);
 //        }
-        controller.buildGraph();
-
+        //controller.buildGraph();
+        //controller.prioritization();
+        System.out.println(controller.suggestionList("999"));
+        // [999, 668, 453, 28, 272, 830, 879, 267, 701, 85, 991, 380, 683, 189, 228, 801, 46, 254, 332, 264, 541, 666, 407, 493, 237, 31, 919, 227]
+        // [999, 668, 453, 28, 272, 830, 879, 85, 991, 380, 683, 189, 228, 801, 46, 254, 931, 264, 541, 666, 407, 87, 493, 338, 31, 919, 181, 322, 227, 848]
     }
 
 
