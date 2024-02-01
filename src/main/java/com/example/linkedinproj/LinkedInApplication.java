@@ -23,16 +23,21 @@ public class LinkedInApplication extends Application {
     public static void main(String[] args) {
         try {
             UserController.readUsersFromJSONFile();
-        } catch (IOException | ParseException | java.text.ParseException e) {
+        } catch (IOException | ParseException e) {
+            throw new RuntimeException(e);
+        } catch (java.text.ParseException e) {
             throw new RuntimeException(e);
         }
         //UserController.setGraphMap();
         try {
             UserController u = new UserController();
-        } catch (IOException | java.text.ParseException | ParseException e) {
+           // u.buildGraph();
+        } catch (IOException | ParseException e) {
+            throw new RuntimeException(e);
+        } catch (java.text.ParseException e) {
             throw new RuntimeException(e);
         }
-        //u.buildGraph();
+
         launch();
 
     }

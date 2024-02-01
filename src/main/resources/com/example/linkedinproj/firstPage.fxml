@@ -49,7 +49,7 @@
             <Font name="Arial Italic" size="14.0" />
          </font>
       </Text>
-      <Button layoutX="599.0" layoutY="296.0" mnemonicParsing="false"  prefHeight="33.0" prefWidth="108.0" style="-fx-background-color: #0125F5;" text="sign up" textFill="WHITE">
+      <Button  onAction="#setSignup" layoutX="599.0" layoutY="296.0" mnemonicParsing="false"  prefHeight="33.0" prefWidth="108.0" style="-fx-background-color: #0125F5;" text="sign up" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font>

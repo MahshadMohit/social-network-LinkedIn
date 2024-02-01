@@ -3,19 +3,18 @@ package com.example.linkedinproj.Controller;
 import com.example.linkedinproj.model.Graph;
 import com.example.linkedinproj.model.User;
 import javafx.scene.image.Image;
-import org.json.JSONException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.*;
 
 public class UserController {
     private static Graph.GraphWithEdgeList graph = new Graph.GraphWithEdgeList();
+    private static Graph.GraphWithAdjacencyList adGraph = new Graph.GraphWithAdjacencyList();
     public static ArrayList<String> posts = new ArrayList<>();
     public static ArrayList<Image> images = new ArrayList<>();
 
@@ -30,12 +29,11 @@ public class UserController {
     public UserController() throws IOException, ParseException, org.json.simple.parser.ParseException {
         readUsersFromJSONFile();
         setGraphMap();
-        buildGraph();
     }
 
     public static void readUsersFromJSONFile() throws IOException, ParseException, org.json.simple.parser.ParseException {
         JSONParser parser = new JSONParser();
-        JSONArray a = (JSONArray) parser.parse(new FileReader("src\\main\\users.json"));
+        JSONArray a = (JSONArray) parser.parse(new FileReader("src/main/java/users.json"));
         User user;
         for (Object o : a) {
             JSONObject person = (JSONObject) o;
@@ -82,38 +80,6 @@ public class UserController {
         return null;
 
     }
-    public static void signup(String id,String name,String dateOfBirth,String universityLocation,
-                              String field, String workplace,List<String> specialties, List<String> connectionId   ){
-        JSONParser jsonParser = new JSONParser();
-        try {
-            Object obj = jsonParser.parse(new FileReader("src/main/users.json"));
-            JSONArray jsonArray = (JSONArray) obj;
-
-
-            org.json.JSONObject object1 = new org.json.JSONObject();
-            object1.put("id",id);
-            object1.put("name",name);
-            object1.put("dateOfBirth",dateOfBirth);
-            object1.put("universityLocation",universityLocation);
-            object1.put("field",field);
-            object1.put("workplace",workplace);
-
-            object1.put("specialties",specialties);
-
-            object1.put("connectionId",connectionId);
-            jsonArray.add(object1);
-
-            FileWriter file = new FileWriter("src/main/users.json");
-            file.write(jsonArray.toJSONString());
-            file.flush();
-            file.close();
-        }
-        catch (ParseException | IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
 
     public void follow(User user, User user1) {
@@ -123,6 +89,7 @@ public class UserController {
     }
 
     public List<String> suggestionList(String id) {//make it return list later
+
         Map<Integer, List<String>> scores = calculateScore(id);
         PriorityQueue<Integer> sortedScores = new PriorityQueue<>(Comparator.reverseOrder());
         sortedScores.addAll(scores.keySet());
@@ -135,6 +102,10 @@ public class UserController {
         return suggestions;
     }
 
+    public List<String> finalResult(String id, String input) {
+        prioritization(input);
+        return suggestionList(id);
+    }
 
     public Set<String> findTheClosest(String id) {
         Queue<String> neighbours = new LinkedList<>(graphMap.get(map.get(id)));
@@ -236,20 +207,19 @@ public class UserController {
         return !priorities.isEmpty();
     }
 
-    public void prioritization() {
+    public void prioritization(String input) {
         System.out.println("enter your priorities with  number in order");
         System.out.println("1:UniversityPlace");
         System.out.println("2:WorkPlace");
         System.out.println("3:Field");
         System.out.println("4:Specialties");
         fillTheOption();
-        String input = scanner.nextLine();
         priorities.addAll(List.of(input.split(" ")));
 
     }
 
     public Map<String, Integer> selectedOne() {
-        prioritization();
+
         Map<String, Integer> selected = new HashMap<>();
         int i = 0;
         while (!priorities.isEmpty()) {
@@ -273,30 +243,35 @@ public class UserController {
         for (String label : map.keySet()) {
             User user = map.get(label);
             graph.addNode(label);
+            adGraph.addNode(label);
 
             for (var id : graphMap.get(user)) {
                 var neighbour = map.get(id);
                 graph.addNode(neighbour.getId());
                 graph.addEdge(user.getId(), map.get(id).getId(), 1);
+                adGraph.addNode(neighbour.getId());
+                adGraph.addEdge(user.getId(), neighbour.getId(), 1);
+
+
             }
         }
+
+
     }
 
 
     public static void main(String[] args) throws IOException, ParseException, org.json.simple.parser.ParseException {
         UserController controller = new UserController();
+        String input = "2 1";
+        for (var s : controller.finalResult("1", input)) {
+            System.out.println(s);
 
-        System.out.println(controller.suggestionList("999").size());
-//        for (String s : controller.suggestionList("1")) {
-//            System.out.println(s);
-//        }
-        //controller.buildGraph();
-        //controller.prioritization();
-        System.out.println(controller.suggestionList("999"));
-        // [999, 668, 453, 28, 272, 830, 879, 267, 701, 85, 991, 380, 683, 189, 228, 801, 46, 254, 332, 264, 541, 666, 407, 493, 237, 31, 919, 227]
-        // [999, 668, 453, 28, 272, 830, 879, 85, 991, 380, 683, 189, 228, 801, 46, 254, 931, 264, 541, 666, 407, 87, 493, 338, 31, 919, 181, 322, 227, 848]
+        }
+
+
+
+
     }
 
 
 }
-
