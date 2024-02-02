@@ -17,6 +17,9 @@ public class UserController {
     private static Graph.GraphWithAdjacencyList adGraph = new Graph.GraphWithAdjacencyList();
     public static ArrayList<String> posts = new ArrayList<>();
     public static ArrayList<Image> images = new ArrayList<>();
+    public List<String > postsOfConsole = new ArrayList<>();
+    public List<List<String>> comment = new ArrayList<>();
+    public List<Integer> likes = new ArrayList<>();
 
 
     public static final Map<String, User> map = new HashMap<>();//nodes or person
@@ -208,11 +211,7 @@ public class UserController {
     }
     // 1 2 3
     public void prioritization(String input) {
-        System.out.println("enter your priorities with  number in order");
-        System.out.println("1:UniversityPlace");
-        System.out.println("2:WorkPlace");
-        System.out.println("3:Field");
-        System.out.println("4:Specialties");
+
         fillTheOption();
         priorities.addAll(List.of(input.split(" ")));
 
@@ -258,22 +257,190 @@ public class UserController {
 
 
     }
+    public User seeUser(String id){
+        for (String s : map.keySet()){
+            if (s.equals(id)){
+                return map.get(s);
+            }
+        }
+        return null;
+    }
 
 
     public static void main(String[] args) throws IOException, ParseException, org.json.simple.parser.ParseException {
+        Scanner sc = new Scanner(System.in);
+        menu(sc);
+
+
+
+
+    }
+    public static void menu(Scanner sc) throws IOException, ParseException, org.json.simple.parser.ParseException {
+        sc = new Scanner(System.in);
         UserController controller = new UserController();
-        String input = "2";
-        for (var s : controller.finalResult("1", input)) {
-            System.out.print(s +" ");
-
-        }
-        for (String s1 : controller.suggestionList("1")){
-            System.out.print(s1 + " ");
-        }
+        System.out.println("Your id : ");
+        String id = sc.nextLine();
+        System.out.println("Your name : ");
+        String name = sc.nextLine();
+        User user = login(id,name);
+        boolean checkMenu = true;
 
 
 
+        do{
 
+            System.out.println("""
+                    [1] About me\s
+                    [2] see connections\s
+                    [3] see suggestion list\s
+                    [4] choose preference\s
+                    [5] search user\s
+                    [6] follow\s
+                    [7] post\s
+                    [8] explore\s
+                    [9] exit""");
+            int choice = sc.nextInt();
+            switch (choice){
+                case 1 :{
+                    System.out.println(user.toString());
+                    break;
+                }
+                case 2:{
+                    for (String s : user.getConnectionId()){
+                        System.out.println("Id : " + s);
+                        System.out.println("Name : "+controller.seeUser(s).getName());
+                    }
+                    boolean checkInfo = true;
+                    do{
+                        System.out.println("Wanna see their info ? [1] y [2] n");
+                        int choiceInfo = sc.nextInt();
+
+                        switch (choiceInfo){
+                            case 1 : {
+                                for (String s : user.getConnectionId()){
+                                    System.out.println(controller.seeUser(s).toString());
+                                }
+                                break;
+
+                            }
+                            case 2 : {
+                                checkInfo = false;
+                                break;
+                            }
+
+                        }
+                    }while (checkInfo);
+                    break;
+                }
+                case 3:{
+                    if (user != null) {
+                        List<String> list = controller.suggestionList(user.getId());
+                        System.out.println("This is the top 20 people we suggest you to connect : ");
+                        for (int i = 1 ; i <= 20 ; i++){
+                            System.out.println(i + ": " + controller.seeUser(list.get(i)).getName() + " " + "Id : " + controller.seeUser(list.get(i)).getId());
+                        }
+                        boolean checkConnect = true;
+                        do{
+                            System.out.println("wanna follow ? [1] y [2] n");
+                            int choiceFollow = sc.nextInt();
+                            switch (choiceFollow){
+                                case 1 : {
+                                    System.out.println("Enter the id : ");
+                                    sc.nextLine();
+                                    int idFollow = sc.nextInt();
+                                    controller.follow(user,map.get(String.valueOf(idFollow)));
+                                    System.out.println("Now the size of connection list is : " + user.getConnectionId().size());
+                                    break;
+                                }
+                                case 2:{
+                                    checkConnect = false;
+                                    break;
+                                }
+                            }
+                        }while (checkConnect);
+                    }
+                    break;
+                }
+                case 4:{
+                    System.out.println("enter your priorities with  number in order");
+                    System.out.println("1:UniversityPlace");
+                    System.out.println("2:WorkPlace");
+                    System.out.println("3:Field");
+                    System.out.println("4:Specialties");
+                    String input = sc.nextLine();
+                    int counter = 1;
+                    for (String s : controller.finalResult(user.getId(),input)){
+                        System.out.println(counter + ": " +map.get(s).getName());
+                        counter++;
+                    }
+                    boolean checkPriority = true;
+                    do{
+                        System.out.println("wanna follow someone? [1] y [2] n");
+                        int choicePref = sc.nextInt();
+                        switch (choicePref){
+                            case 1 : {
+                                String idofSomeone = sc.next();
+                                controller.follow(user,map.get(idofSomeone));
+                                System.out.println("now size of your connection list : "+user.getConnectionId().size());
+                                break;
+                            } case 2:{
+                                checkPriority = false;
+                                break;
+                            }
+                        }
+                    }while (checkPriority);
+                    break;
+
+                }
+                case 5:{
+                    System.out.println("enter the name you wanna search : ");
+                    sc.nextLine();
+                    String nameSearch = sc.nextLine();
+                    for (User u : map.values()){
+                        if (u.getName().equals(nameSearch)){
+                            System.out.println(u.toString());
+                        }
+                    }
+                    break;
+                }
+                case 6:{
+                    System.out.println("Enter the id you wanna follow : ");
+                    String idSixFollow = sc.next();
+                    controller.follow(user,map.get(idSixFollow));
+                    System.out.println(user.getConnectionId().size());
+                    break;
+                }
+                case 7:{
+                    System.out.println("Write any post and share with others : ");
+                    String post = sc.nextLine();
+                    controller.postsOfConsole.add(post);
+                    break;
+                }
+                case 8:{
+                    for (String s : controller.postsOfConsole){
+                        System.out.println("Post " + controller.postsOfConsole.indexOf(s) + " : " + s);
+                        System.out.println("**************************************************");
+                        for (String comment : controller.comment.get(controller.postsOfConsole.indexOf(s))){
+                            System.out.println(comment);
+                        }
+                        System.out.println();
+                    }
+                    System.out.println("comment any post you want with the index of post : ");
+                    int indexPost = sc.nextInt();
+                    String comment = sc.nextLine();
+                    controller.comment.get(indexPost).add(comment);
+                    break;
+                }
+                case 9:{
+                    checkMenu = false;
+                    break;
+                }
+
+            }
+
+
+
+        }while (checkMenu);
     }
 
 
