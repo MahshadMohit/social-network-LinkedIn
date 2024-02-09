@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="548.0" prefWidth="1021.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.linkedinproj.Message">
+
+    <children>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="489.0" layoutX="-13.0" layoutY="66.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="169.0">
+            <fill>
+                <LinearGradient endX="1.0" endY="1.0">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color red="0.11764705926179886" green="0.5647059082984924" blue="1.0" />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="0.1546458750963211" green="0.2686592936515808" blue="0.3684210479259491" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </fill>
+        </Rectangle>
+        <ImageView fx:id="linkedin" fitHeight="78.0" fitWidth="65.0" layoutX="-7.0" layoutY="1.0"  pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../888041_logo_512x512.png" />
+            </image>
+        </ImageView>
+        <Rectangle fx:id="homepageRec" arcHeight="500.0" arcWidth="20.0" fill="WHITE" height="42.0" layoutX="14.0" layoutY="179.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="186.0" />
+        <Rectangle fx:id="networkRec" arcHeight="500.0" arcWidth="20.0" fill="WHITE" height="42.0" layoutX="14.0" layoutY="128.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" width="186.0" />
+        <Rectangle fx:id="messageRec" arcHeight="500.0" arcWidth="20.0" fill="WHITE" height="42.0" layoutX="14.0" layoutY="179.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" width="186.0" />
+        <Text fx:id="homepageText" fill="WHITE" layoutX="58.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Homepage">
+            <font>
+                <Font name="Arial Unicode MS" size="18.0" />
+            </font>
+        </Text>
+        <Text fx:id="networkText" fill="WHITE" layoutX="63.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Network">
+            <font>
+                <Font name="Arial Unicode MS" size="18.0" />
+            </font>
+        </Text>
+        <Text fx:id="message" fill="DODGERBLUE" layoutX="63.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Messege">
+            <font>
+                <Font name="Arial Unicode MS" size="18.0" />
+            </font>
+        </Text>
+
+        <ToggleButton fx:id="toggle" layoutX="593.0" layoutY="517.0" mnemonicParsing="false" text="ToggleButton" visible="false" />
+        <ScrollPane fx:id="pane" hbarPolicy="NEVER" layoutX="274.0" layoutY="200.0" prefHeight="327.0" prefWidth="201.0" vbarPolicy="ALWAYS" visible="false">
+            <content>
+                <VBox fx:id="vbox" alignment="TOP_CENTER" prefHeight="375.0" prefWidth="181.0" spacing="5.0" />
+            </content>
+        </ScrollPane>
+        <Text fx:id="usernamePic" layoutX="472.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <font>
+                <Font name="Arial" size="14.0" />
+            </font>
+        </Text>
+        <ImageView fx:id="postPicforPost" fitHeight="54.0" fitWidth="62.0" layoutX="399.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+            <effect>
+                <DropShadow />
+            </effect>
+        </ImageView>
+        <HBox fx:id="hbox" alignment="CENTER_LEFT" layoutX="399.0" layoutY="422.0" prefHeight="42.0" prefWidth="383.0" spacing="10.0" style="-fx-border-color: #000000;" visible="false">
+            <children>
+                <ImageView fx:id="commentImage" fitHeight="41.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true" />
+                <Label fx:id="commentLabel">
+                    <font>
+                        <Font name="Arial" size="12.0" />
+                    </font>
+                </Label>
+                <Text fx:id="commentText" strokeType="OUTSIDE" strokeWidth="0.0" />
+            </children>
+            <effect>
+                <DropShadow radius="10.485" width="22.94" />
+            </effect>
+        </HBox>
+      <SplitPane dividerPositions="0.22969432314410484" layoutX="183.0" layoutY="69.0" prefHeight="456.0" prefWidth="766.0">
+        <items>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+               <children>
+                  <ImageView fx:id="prof1" onMouseClicked="#setChat1" fitHeight="82.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true" />
+                  <Text fx:id="name1" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Text>
+                  <ImageView fx:id="prof2" onMouseClicked="#setChat2" fitHeight="82.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true" />
+                  <Text fx:id="name2" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Text>
+                  <ImageView fx:id="prof3" onMouseClicked="#setChat3" fitHeight="82.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true" />
+                  <Text fx:id="name3" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <VBox fx:id="girande" prefHeight="386.0" prefWidth="143.0" />
+                  <VBox fx:id="ferestande" layoutX="441.0" prefHeight="386.0" prefWidth="143.0" />
+                  <TextField fx:id="tf" layoutY="400.0" prefHeight="32.0" prefWidth="487.0" />
+                  <Button fx:id="send" layoutX="504.0" layoutY="403.0" mnemonicParsing="false" style="-fx-background-color: #1e90ff;" text="send" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+
+    </children>
+
+
+
+
+
+</AnchorPane>

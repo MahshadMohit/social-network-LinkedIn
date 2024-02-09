@@ -59,6 +59,7 @@ public class FirstPage {
         grid.add(name, 1, 1);
 
 
+
         Node loginButton = dialog.getDialogPane().lookupButton(login);
         loginButton.setDisable(true);
         id.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -67,6 +68,7 @@ public class FirstPage {
 
         dialog.getDialogPane().setContent(grid);
         Platform.runLater(() -> id.requestFocus());
+
         dialog.setResultConverter(dialogButton -> {
             if (dialogButton == login) {
                 return new Pair<>(id.getText(), name.getText());
@@ -76,7 +78,7 @@ public class FirstPage {
         Optional<Pair<String, String>> result = dialog.showAndWait();
         result.ifPresent(usernamePassword -> {
             System.out.println("Username=" + usernamePassword.getKey() + ", Password=" + usernamePassword.getValue());
-            user = UserController.login(id.getText(), name.getText());
+            user = UserController.login(id.getText());
 
         });
     }

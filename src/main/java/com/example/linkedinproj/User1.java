@@ -1,20 +1,27 @@
 package com.example.linkedinproj;
 
 import com.example.linkedinproj.Controller.UserController;
+import com.example.linkedinproj.Controller.guiController.FirstPage;
 import com.example.linkedinproj.model.User;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,6 +29,7 @@ import java.net.URL;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class User1 implements Initializable {
@@ -29,13 +37,14 @@ public class User1 implements Initializable {
     public ImageView postPicforPost;
     public Text usernamePic;
     public TextField comment;
+    public TextField commentTF1;
     @FXML
     private VBox vbox;
     @FXML
     private ScrollPane pane;
 
     @FXML
-    private ImageView choosePic;
+    private HBox hbox;
 
     @FXML
     private ImageView edit1;
@@ -72,6 +81,8 @@ public class User1 implements Initializable {
 
     @FXML
     private Button follow9;
+    @FXML
+    private Button postComment;
 
     @FXML
     private Rectangle homepageRec;
@@ -164,13 +175,35 @@ public class User1 implements Initializable {
     @FXML
     private Button prev;
     @FXML
+    private CheckBox uni;
+    @FXML
+    private CheckBox work;
+    @FXML
+    private CheckBox field;
+    @FXML
+    private CheckBox special;
+    @FXML
+    private Button filter;
+    @FXML
+    private ImageView linkedin;
+    @FXML
+    private ImageView commentImage;
+    @FXML
+    private Label commentLabel;
+    @FXML
+    private Text commentText;
+    public StringBuilder sb = new StringBuilder(" ");
+    @FXML
     private ImageView profile0, profile1, profile2, profile3, profile4, profile5, profile6, profile7, profile8, profile9;
     private List<String> listPrefer = new ArrayList<>();
     @FXML
     private Text conUser;
+
+
+    ToggleGroup toggleButton = new ToggleGroup();
     public Image[] images = new Image[10];
     public Button[] buttons = new Button[10];
-    private UserController controller;
+    private final UserController controller;
 
     {
         try {
@@ -185,6 +218,7 @@ public class User1 implements Initializable {
         UserController.posts.add(postTF.getText());
         UserController.images.add(postPic.getImage());
         addPost();
+        setLastPost();
 
     }
 
@@ -209,24 +243,27 @@ public class User1 implements Initializable {
             postPic.setImage(image);
         }
     }
-    public void select(){
+
+    public void select() {
         if ((!specialtiChoice.isSelected()) && (!fieldChoice.isSelected()) && (!workChoice.isSelected()) && (!uniChoice.isSelected())) {
             listPrefer = controller.suggestionList(user.getId());
 
-        }
-        else if ((uniChoice.isSelected()) && (!specialtiChoice.isSelected()) && (!fieldChoice.isSelected()) && (!workChoice.isSelected())){
-            listPrefer = controller.finalResult(user.getId(),"1");
-        }
-        else if( (workChoice.isSelected()) && (!specialtiChoice.isSelected()) && (!fieldChoice.isSelected()) && (!uniChoice.isSelected())){
-            listPrefer = controller.finalResult(user.getId(),"2");
+
+        } else if ((uniChoice.isSelected()) && (!specialtiChoice.isSelected()) && (!fieldChoice.isSelected()) && (!workChoice.isSelected())) {
+            listPrefer = controller.finalResult(user.getId(), "1");
+
+        } else if ((workChoice.isSelected()) && (!specialtiChoice.isSelected()) && (!fieldChoice.isSelected()) && (!uniChoice.isSelected())) {
+            listPrefer = controller.finalResult(user.getId(), "2");
+
+
+        } else if (fieldChoice.isSelected() && (!workChoice.isSelected()) && (!specialtiChoice.isSelected()) && (!uniChoice.isSelected())) {
+            listPrefer = controller.finalResult(user.getId(), "3");
+
+        } else if (specialtiChoice.isSelected() && (!fieldChoice.isSelected()) && (!workChoice.isSelected()) && (!uniChoice.isSelected())) {
+            listPrefer = controller.finalResult(user.getId(), "4");
 
         }
-        else if (fieldChoice.isSelected() && (!workChoice.isSelected()) && (!specialtiChoice.isSelected()) && (!uniChoice.isSelected())){
-            listPrefer = controller.finalResult(user.getId(),"3");
-        }
-        else if (specialtiChoice.isSelected() && (!fieldChoice.isSelected()) && (!workChoice.isSelected()) && (!uniChoice.isSelected())){
-            listPrefer = controller.finalResult(user.getId(),"4");
-        }
+
     }
 
     public void setPrev() {
@@ -239,6 +276,28 @@ public class User1 implements Initializable {
         select();
         listPrefer.remove(0);
         next();
+    }
+
+    public void setFilter() {
+        if ((!specialtiChoice.isSelected()) && (!fieldChoice.isSelected()) && (!workChoice.isSelected()) && (!uniChoice.isSelected())) {
+            listPrefer = controller.suggestionList(user.getId());
+
+
+        } else {
+            if (uniChoice.isSelected()) {
+                sb.append("1 ");
+            } else if (workChoice.isSelected()) {
+                sb.append("2 ");
+            } else if (fieldChoice.isSelected()) {
+                sb.append("3 ");
+            } else if (specialtiChoice.isSelected()) {
+                sb.append("4 ");
+            }
+            listPrefer = controller.finalResult(user.getId(), sb.toString());
+        }
+        listPrefer.remove(0);
+        prev();
+
     }
 
     public void next() {
@@ -397,12 +456,127 @@ public class User1 implements Initializable {
             setImages(u.getId(), img);
             vbox.getChildren().add(img);
             vbox.getChildren().add(new Text(u.getId()));
+
         }
     }
+
     public void setExit(MouseEvent mouseEvent) {
         pane.setVisible(false);
     }
 
+    public void setGo(Text text, MouseEvent e) throws IOException {
+
+        User userFollow = UserController.map.get(text.getText());
+        FXMLLoader fxmlLoader = new FXMLLoader(LinkedInApplication.class.getResource("followPage.fxml"));
+        FollowPage.user = userFollow;
+        FollowPage.mainUser = user;
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    public void setProfile0(MouseEvent e) throws IOException {
+        setGo(username1, e);
+    }
+
+    public void setProfile1(MouseEvent e) throws IOException {
+        setGo(username2, e);
+    }
+
+    public void setProfile2(MouseEvent e) throws IOException {
+        setGo(username3, e);
+    }
+
+    public void setProfile3(MouseEvent e) throws IOException {
+        setGo(username4, e);
+    }
+
+    public void setProfile4(MouseEvent e) throws IOException {
+        setGo(username5, e);
+    }
+
+    public void setProfile5(MouseEvent e) throws IOException {
+        setGo(username6, e);
+    }
+
+    public void setProfile6(MouseEvent e) throws IOException {
+        setGo(username7, e);
+    }
+
+    public void setProfile7(MouseEvent e) throws IOException {
+        setGo(username8, e);
+    }
+
+    public void setProfile8(MouseEvent e) throws IOException {
+        setGo(username9, e);
+    }
+
+    public void setProfile9(MouseEvent e) throws IOException {
+        setGo(username10, e);
+    }
+
+    public void setSearch(MouseDragEvent e) throws IOException {
+        User userFollow = UserController.map.get(search.getText());
+        FXMLLoader fxmlLoader = new FXMLLoader(LinkedInApplication.class.getResource("user1.fxml"));
+        FollowPage.user = userFollow;
+        FollowPage.mainUser = user;
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void setBack(MouseEvent e) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(LinkedInApplication.class.getResource("firstPage.fxml"));
+        FirstPage.user = null;
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void setLastPost() {
+        hbox.setVisible(true);
+        if (UserController.postUsers.size() != 0) {
+            usernamePic.setText(UserController.postUsers.get(UserController.postUsers.size() - 1));
+
+        }
+
+        if (UserController.posts.size() != 0) {
+            postTF2.setText(UserController.posts.get(UserController.posts.size() - 1));
+        }
+        if (UserController.images.size() != 0) {
+            postPic2.setImage(UserController.images.get(UserController.images.size() - 1));
+        }
+        if (UserController.postComments.size() != 0) {
+            commentText.setText(UserController.postComments.get(UserController.postComments.size() - 1));
+        }
+        if (UserController.userComments.size() != 0) {
+            commentLabel.setText(UserController.map.get(UserController.userComments.get(UserController.userComments.size() - 1)).getName());
+            setImages(UserController.userComments.get(UserController.userComments.size() - 1), commentImage);
+        }
+
+
+    }
+
+    public void setPostComment(ActionEvent actionEvent) {
+        hbox.setVisible(true);
+
+
+        UserController.postComments.add(commentTF1.getText());
+        UserController.userComments.add(user.getId());
+
+        if (UserController.postComments.size() != 0) {
+            commentText.setText(UserController.postComments.get(UserController.postComments.size() - 1));
+        }
+        if (UserController.userComments.size() != 0) {
+            commentLabel.setText(UserController.map.get(UserController.userComments.get(UserController.userComments.size() - 1)).getName());
+            setImages(UserController.userComments.get(UserController.userComments.size() - 1), commentImage);
+        }
+
+    }
 
 
     @Override
@@ -416,7 +590,12 @@ public class User1 implements Initializable {
         conUser.setText(String.valueOf(user.getConnectionId().size()));
         setImages(user.getId(), profile);
         setPrev();
+        profile.setLayoutY(80);
+        profile.setLayoutX(220);
+        setLastPost();
 
 
     }
+
+
 }

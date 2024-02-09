@@ -78,11 +78,11 @@ public class Graph {
         }
 
         public void addEdge(String from, String to, int weight) {
-            var fromNode = nodes.get(from);
+            Node fromNode = nodes.get(from);
             if (from == null)
                 throw new IllegalStateException();
 
-            var toNode = nodes.get(to);
+            Node toNode = nodes.get(to);
             if (to == null)
                 throw new IllegalStateException();
 
@@ -338,7 +338,7 @@ public class Graph {
             }
             return endVertices;
         }
-        /*public List<List<String>> highestDegreeCentralityNodesPerComponent() {
+        public List<List<String>> highestDegreeCentralityNodesPerComponent() {
             List<List<String>> result = new ArrayList<>();
 
             Set<Node> visitedNodes = new HashSet<>();
@@ -380,7 +380,7 @@ public class Graph {
             }
 
             return highestDegreeNodes;
-        }*/
+        }
 
 
         public String opposite(String label, Edge e) {

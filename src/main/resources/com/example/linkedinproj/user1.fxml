@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="548.0" prefWidth="1021.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.linkedinproj.User1">
+<AnchorPane prefHeight="548.0" prefWidth="1021.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.linkedinproj.User1">
     <children>
         <Rectangle arcHeight="5.0" arcWidth="5.0" height="489.0" layoutX="-13.0" layoutY="66.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="169.0">
             <fill>
@@ -29,12 +42,12 @@
                 </LinearGradient>
             </fill>
         </Rectangle>
-        <ImageView fitHeight="78.0" fitWidth="65.0" layoutX="-7.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="linkedin" fitHeight="78.0" fitWidth="65.0" layoutX="-7.0" layoutY="1.0" onMouseClicked="#setBack" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../../888041_logo_512x512.png" />
             </image>
         </ImageView>
-        <TextField fx:id="search" layoutX="58.0" layoutY="18.0" prefHeight="31.0" prefWidth="678.0" promptText="search..." style="-fx-background-color: #FFFFFF; -fx-border-color: #E0E3ED;">
+        <TextField fx:id="search" layoutX="58.0" layoutY="18.0" onMouseDragEntered="#setSearch" prefHeight="31.0" prefWidth="678.0" promptText="search..." style="-fx-background-color: #FFFFFF; -fx-border-color: #E0E3ED;">
             <font>
                 <Font name="Arial" size="14.0" />
             </font>
@@ -131,7 +144,7 @@
                 </DropShadow>
             </effect>
         </Rectangle>
-        <ImageView fx:id="postPic2" fitHeight="190.0" fitWidth="180.0" layoutX="486.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="postPic2" fitHeight="142.0" fitWidth="158.0" layoutX="491.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../../download.png" />
             </image>
@@ -145,7 +158,7 @@
                             <children>
                                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="2.0" style="-fx-background-color: #E8F3F7;">
                                     <children>
-                                        <ImageView fx:id="profile0" fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fx:id="profile0" fitHeight="66.0" fitWidth="72.0" onMouseClicked="#setProfile0" pickOnBounds="true" preserveRatio="true">
 
                                             <effect>
                                                 <DropShadow />
@@ -165,7 +178,7 @@
                                 </VBox>
                                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="2.0" style="-fx-background-color: #E8F3F7;">
                                     <children>
-                                        <ImageView fx:id="profile1" fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fx:id="profile1" fitHeight="66.0" fitWidth="72.0" onMouseClicked="#setProfile1" pickOnBounds="true" preserveRatio="true">
                                             <image>
                                                 <Image url="@../../8.jpg" />
                                             </image>
@@ -190,7 +203,7 @@
                             <children>
                                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E8F3F7;">
                                     <children>
-                                        <ImageView fx:id="profile2" fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fx:id="profile2" fitHeight="66.0" fitWidth="72.0" onMouseClicked="#setProfile2" pickOnBounds="true" preserveRatio="true">
                                             <image>
                                                 <Image url="@../../0.jpg" />
                                             </image>
@@ -211,7 +224,7 @@
                                 </VBox>
                                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E8F3F7;">
                                     <children>
-                                        <ImageView fx:id="profile3" fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fx:id="profile3" fitHeight="66.0" fitWidth="72.0" onMouseClicked="#setProfile3" pickOnBounds="true" preserveRatio="true">
                                             <image>
                                                 <Image url="@../../4.jpeg" />
                                             </image>
@@ -236,7 +249,7 @@
                             <children>
                                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E8F3F7;">
                                     <children>
-                                        <ImageView fx:id="profile4" fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fx:id="profile4" fitHeight="66.0" fitWidth="72.0" onMouseClicked="#setProfile4" pickOnBounds="true" preserveRatio="true">
                                             <image>
                                                 <Image url="@../../1.jpeg" />
                                             </image>
@@ -257,7 +270,7 @@
                                 </VBox>
                                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E8F3F7;">
                                     <children>
-                                        <ImageView fx:id="profile5" fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fx:id="profile5" fitHeight="66.0" fitWidth="72.0" onMouseClicked="#setProfile5" pickOnBounds="true" preserveRatio="true">
 
                                             <effect>
                                                 <DropShadow />
@@ -280,7 +293,7 @@
                             <children>
                                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E8F3F7;">
                                     <children>
-                                        <ImageView fx:id="profile6" fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fx:id="profile6" fitHeight="66.0" fitWidth="72.0" onMouseClicked="#setProfile6" pickOnBounds="true" preserveRatio="true">
                                             <image>
                                                 <Image url="@../../9.jpg" />
                                             </image>
@@ -301,7 +314,7 @@
                                 </VBox>
                                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E8F3F7;">
                                     <children>
-                                        <ImageView fx:id="profile7" fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fx:id="profile7" fitHeight="66.0" fitWidth="72.0" onMouseClicked="#setProfile7" pickOnBounds="true" preserveRatio="true">
                                             <image>
                                                 <Image url="@../../5.jpeg" />
                                             </image>
@@ -326,7 +339,7 @@
                             <children>
                                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E8F3F7;">
                                     <children>
-                                        <ImageView fx:id="profile8" fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fx:id="profile8" fitHeight="66.0" fitWidth="72.0" onMouseClicked="#setProfile8" pickOnBounds="true" preserveRatio="true">
                                             <image>
                                                 <Image url="@../../6.jpeg" />
                                             </image>
@@ -347,7 +360,7 @@
                                 </VBox>
                                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E8F3F7;">
                                     <children>
-                                        <ImageView fx:id="profile9" fitHeight="66.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fx:id="profile9" fitHeight="66.0" fitWidth="72.0" onMouseClicked="#setProfile9" pickOnBounds="true" preserveRatio="true">
                                             <image>
                                                 <Image url="@../../7.jpeg" />
                                             </image>
@@ -386,11 +399,12 @@
                 </DropShadow>
             </effect>
         </ScrollPane>
-        <RadioButton fx:id="specialtiChoice" layoutX="936.0" layoutY="526.0" mnemonicParsing="false" text="Specialties" />
+
         <ToggleButton fx:id="toggle" layoutX="593.0" layoutY="517.0" mnemonicParsing="false" text="ToggleButton" visible="false" />
-        <RadioButton fx:id="fieldChoice" layoutX="882.0" layoutY="527.0" mnemonicParsing="false" text="Field" />
-        <RadioButton fx:id="workChoice" layoutX="800.0" layoutY="527.0" mnemonicParsing="false" text="WorkPlace" />
-        <RadioButton fx:id="uniChoice" layoutX="690.0" layoutY="526.0" mnemonicParsing="false" text="UniversityPlace" />
+        <RadioButton fx:id="specialtiChoice" layoutX="883.0" layoutY="526.0" mnemonicParsing="false" text="Specialties" />
+        <RadioButton fx:id="fieldChoice" layoutX="829.0" layoutY="527.0" mnemonicParsing="false" text="Field" />
+        <RadioButton fx:id="workChoice" layoutX="747.0" layoutY="527.0" mnemonicParsing="false" text="WorkPlace" />
+        <RadioButton fx:id="uniChoice" layoutX="637.0" layoutY="526.0" mnemonicParsing="false" text="UniversityPlace" />
         <Button fx:id="next" layoutX="936.0" layoutY="37.0" mnemonicParsing="false" onAction="#setNext" prefHeight="23.0" prefWidth="65.0" style="-fx-background-color: #1e90ff;" text="next" textFill="WHITE">
             <font>
                 <Font name="Arial Bold" size="12.0" />
@@ -417,7 +431,7 @@
                 <VBox fx:id="vbox" alignment="TOP_CENTER" prefHeight="375.0" prefWidth="181.0" spacing="5.0" />
             </content>
         </ScrollPane>
-        <Text fx:id="usernamePic" layoutX="472.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username">
+        <Text fx:id="usernamePic" layoutX="472.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0">
             <font>
                 <Font name="Arial" size="14.0" />
             </font>
@@ -427,6 +441,41 @@
                 <DropShadow />
             </effect>
         </ImageView>
+      <Button fx:id="filter" layoutX="970.0" layoutY="523.0" mnemonicParsing="false" onAction="#setFilter" prefHeight="23.0" prefWidth="47.0" style="-fx-background-color: #1e90ff;" text="Filter" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <TextField fx:id="commentTF1" layoutX="400.0" layoutY="474.0" onMouseDragEntered="#setSearch" prefHeight="28.0" prefWidth="306.0" promptText="comment..." style="-fx-background-color: #FFFFFF; -fx-border-color: #E0E3ED;">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </TextField>
+      <Button fx:id="postComment" layoutX="712.0" layoutY="476.0" mnemonicParsing="false" onAction="#setPostComment" prefHeight="23.0" prefWidth="80.0" style="-fx-background-color: #1e90ff;" text="comment" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <HBox fx:id="hbox" alignment="CENTER_LEFT" layoutX="399.0" layoutY="422.0" prefHeight="42.0" prefWidth="383.0" spacing="10.0" style="-fx-border-color: #000000;" visible="false">
+         <children>
+            <ImageView fx:id="commentImage" fitHeight="41.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="commentLabel">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <Text fx:id="commentText" strokeType="OUTSIDE" strokeWidth="0.0" />
+         </children>
+         <effect>
+            <DropShadow radius="10.485" width="22.94" />
+         </effect>
+      </HBox>
 
     </children>
 
